@@ -1,0 +1,104 @@
+---
+title: Modify a Credit Application
+description: A guide to editing and updating an existing credit application in SenteScore.
+sidebar:
+  order: 5
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The **Edit Credit Application** page allows authorised users to modify the details of an existing credit application. Any changes saved will trigger a re-calculation of the applicant's credit score, giving you an updated result based on the revised data.
+
+To access this page, open an application from the **Credit Applications** list and select the edit option.
+
+---
+
+![Edit Credit Application page](/images/edit-credit-application.png)
+
+## Page Overview
+
+The edit form is identical in structure to the [New Credit Application](/guides/new-credit-application) form, with all previously entered data pre-filled and ready to modify. It contains three sections: **Applicant Information**, **Application Data**, and **Required Documents**.
+
+<Aside type="note">
+  The page subtitle reads *"Modify the application to get an updated credit score"* — every save recalculates the score from scratch based on the latest values entered.
+</Aside>
+
+---
+
+## Applicant Information
+
+All applicant identity fields are editable and pre-populated with the values from the original submission.
+
+| Field | Required | Description |
+|---|---|---|
+| **Full Name** | ✅ Yes | The applicant's complete legal name. |
+| **National Identification Number (NIN)** | ✅ Yes | The applicant's government-issued national ID number. |
+| **Phone Number** | ✅ Yes | The applicant's primary contact number. |
+| **Email Address** | No | The applicant's email address. |
+| **Branch** | ✅ Yes | The branch associated with the application, selectable from a dropdown. |
+
+### Validation Rules
+
+The same strict validation that applies on creation is enforced on edit:
+
+- **NIN** — Must be a valid, correctly formatted national identification number.
+- **Phone Number** — Must be a valid phone number format (e.g. `+1 (502) 438-3487`).
+- **Email Address** — If provided, must be a properly formatted email address.
+
+---
+
+## Application Data
+
+This section contains the financial inputs used to compute the credit score. All fields are pre-filled with the previously submitted values and can be updated freely.
+
+<Aside type="tip">
+  These fields are **dynamically configured** by your system administrators in **Settings**. The fields available in your organisation may differ from those shown here. Any field changes directly affect the recalculated credit score upon saving.
+</Aside>
+
+| Field | Description |
+|---|---|
+| **Gross Monthly Income** | The sum of all the applicant's monthly incomes. |
+| **Total Expenditures** | The sum of all the applicant's monthly expenditures. |
+| **Total Current Debt** | The total outstanding debt the applicant currently holds. |
+| **Current Monthly Debt Installment** | The monthly repayment amount on existing debts. |
+| **CRB Score** | The applicant's score from the Credit Reference Bureau platform. |
+| **Loan Application Amount** | The amount of money the applicant is requesting. |
+| **Proposed Monthly Payment** | The monthly repayment the applicant proposes for the requested loan. |
+| **Purpose** | What the applicant intends to use the loan for. |
+
+---
+
+## Required Documents
+
+This section allows supporting documents to be attached to the application. Document requirements are configured by administrators and may vary by workflow or loan product.
+
+<Aside type="tip">
+  Like the Application Data fields, the documents requested here are **dynamically set by administrators**. Your organisation may require different documents depending on the loan type or workflow configured.
+</Aside>
+
+Each document requirement shows:
+- The **document name** and description (e.g. *Bank / Mobile Money Statement for 6 months*)
+- A red asterisk (`*`) if the document is **mandatory**
+- A **Choose File** upload button to attach the relevant file
+
+---
+
+## Notes
+
+A free-text **Notes** field at the bottom of the form allows the submitting user to add any additional context, observations, or remarks about the application. This is optional but useful for communicating information to reviewers further along the workflow.
+
+---
+
+## Saving Changes
+
+<Steps>
+1. Update any fields in **Applicant Information** or **Application Data** as needed.
+2. Upload any required or updated documents in the **Required Documents** section.
+3. Add any relevant remarks in the **Notes** field.
+4. Click **Update Credit Application** to save. The credit score will be recalculated immediately based on the new values.
+5. To discard all changes, click **Cancel** or **Back to Applications**.
+</Steps>
+
+<Aside type="caution">
+  Saving an edited application recalculates the credit score. If the application is already in an active workflow, reviewers will see the updated score. Ensure all changes are intentional before clicking **Update Credit Application**.
+</Aside>
