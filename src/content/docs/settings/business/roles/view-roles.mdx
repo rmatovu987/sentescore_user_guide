@@ -1,0 +1,76 @@
+---
+title: Roles
+description: A guide to managing roles in SenteScore.
+sidebar:
+  order: 15
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Roles** page allows administrators to define and manage the roles within their organisation. Roles are central to how SenteScore controls access and routes workflow approvals — every user is assigned a role, and every workflow level is mapped to a role that determines who can review and action applications at that stage.
+
+Navigate here via **Home → Settings → Business Settings → Roles**.
+
+---
+
+![Roles page](/images/settings-roles.png)
+
+## Page Overview
+
+The page lists all configured roles in the organisation. A **New Role** button in the top-right allows administrators to create additional roles as the team grows.
+
+---
+
+## Table Columns
+
+| Column | Description |
+|---|---|
+| **ID** | The unique alphanumeric identifier for the role. Click it to open the role detail and edit it. |
+| **Name** | The display name of the role (e.g. *Credit Officer*, *Finance Officer*). This name is used when assigning roles to workflow levels and to users. |
+| **Description** | A short explanation of the role's purpose within the organisation. |
+| **Status** | Whether the role is currently **Active** or inactive. Only active roles can be assigned to users and workflow levels. |
+
+---
+
+## Default Roles
+
+SenteScore comes pre-configured with the following roles out of the box:
+
+| Role | Description |
+|---|---|
+| **Super Admin** | Super Administrator with full platform access and control. |
+| **Branch Manager** | Manages branch operations. |
+| **Credit Officer** | Evaluates creditworthiness of applicants. |
+| **MSME Officer** | Handles MSME arbitration within the approval chain. |
+| **Finance Officer** | Processes disbursements at the final workflow level. |
+| **Loan Officer** | Initiates loan applications on behalf of applicants. |
+
+<Aside type="note">
+  These roles map directly to the levels in your configured approval workflows. For example, a workflow with three levels might assign Credit Officer → MSME Officer → Finance Officer at Levels 1, 2, and 3 respectively.
+</Aside>
+
+---
+
+## Role Statuses
+
+| Status | Meaning |
+|---|---|
+| **Active** | The role is live and can be assigned to users and workflow levels. |
+| **Inactive** | The role has been disabled. It cannot be assigned to new users or workflow levels. |
+
+<Aside type="caution">
+  Deactivating a role does not automatically remove it from users or workflow levels it has already been assigned to. Review existing assignments before deactivating a role to avoid disruption to the approval chain.
+</Aside>
+
+---
+
+## Search & Export
+
+Use the **search bar** to filter roles by name, description, or ID. The **Export** button supports the following formats:
+
+- **PDF** — for sharing with stakeholders or compliance records
+- **Excel** — `.xlsx` for record-keeping or analysis
+- **CSV** — plain-text for importing into other tools
+- **Copy to Clipboard** — for quickly pasting into another application
+
+Use **Column Visibility** to show or hide specific columns in the table.

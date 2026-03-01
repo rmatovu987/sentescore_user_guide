@@ -1,0 +1,40 @@
+---
+title: Create a Role
+description: A guide to creating a new role in SenteScore.
+sidebar:
+  order: 16
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Roles define the functional responsibilities of users in your organisation and control which parts of the platform they can access. Creating a role makes it available for assignment to users and to workflow approval levels.
+
+Navigate to **Home → Settings → Business Settings → Roles** and click the **New Role** button in the top-right corner.
+
+---
+
+![New Role modal](/images/create-role.png)
+
+## Form Fields
+
+| Field | Required | Description |
+|---|---|---|
+| **Name** | ✅ Yes | The display name of the role (e.g. *Risk Analyst*, *Regional Manager*). This name appears in user assignments and workflow level configuration. |
+| **Description** | No | A short explanation of the role's purpose (e.g. *Reviews high-value loan applications*). Helps administrators understand the role's intended function at a glance. |
+
+---
+
+## Creating the Role
+
+<Steps>
+1. Navigate to **Settings → Business Settings → Roles** and click **New Role**.
+2. Enter a **Name** for the role.
+3. Optionally add a **Description** to clarify the role's purpose.
+4. Click **Create Role** to save.
+</Steps>
+
+The new role appears in the Roles list immediately with **Active** status. You can then assign it to users and configure its permissions from the [Role Detail](/guides/role-detail) page.
+
+<Aside type="note">
+  After creating a role, you will need to configure its **Permissions** (System, Workflow Management, Settings, Scoring) from the role detail page before assigning it to users.
+</Aside>

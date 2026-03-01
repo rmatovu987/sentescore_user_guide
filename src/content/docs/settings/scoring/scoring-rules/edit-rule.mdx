@@ -1,0 +1,73 @@
+---
+title: Edit a Scoring Rule
+description: A guide to editing a credit scoring rule in SenteScore.
+sidebar:
+  order: 31
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Administrators can edit a scoring rule at any time to adjust its condition, points, weight, status, description, or risk thresholds. Changes take effect immediately — the next application scored after saving will use the updated rule configuration.
+
+Navigate to **Settings → Credit Scoring Settings → Credit Scoring Rules**, click the rule's **Field Name** to open the [Scoring Rule Detail](/guides/scoring-rule-detail) page, then click **Edit**.
+
+---
+
+![Edit Scoring Rule page](/images/edit-scoring-rule.png)
+
+## Form Fields
+
+The edit form is pre-populated with the rule's current values. All fields are editable:
+
+| Field | Required | Description |
+|---|---|---|
+| **Field Name** | ✅ Yes | The field this rule evaluates, selectable from configured Field Definitions. |
+| **Operator** | ✅ Yes | The comparison operator (e.g. *Greater than*, *Less than*, *Between*). |
+| **Value** | No | The threshold value to compare the field against. |
+| **Points** | ✅ Yes | Points to award (positive) or deduct (negative) when the condition is matched. |
+| **Weight** | No | Multiplier for the points. Defaults to `1.0`. |
+| **Active** | No | Uncheck to deactivate the rule without deleting it. Inactive rules are excluded from scoring calculations. |
+| **Description** | No | An explanation of the rule's purpose, shown in the score breakdown on application pages. |
+
+---
+
+## Editing Risk Thresholds
+
+The **Enable risk thresholds for this rule** checkbox controls whether the Risk Thresholds section is shown. Checking it reveals the threshold builder; unchecking it hides and removes any configured thresholds on save.
+
+![Risk Thresholds section on edit](/images/edit-scoring-rule-thresholds.png)
+
+When enabled, you can add, edit, or remove threshold bands. Each threshold block defines a named risk category with the following fields:
+
+| Field | Required | Description |
+|---|---|---|
+| **Risk Category** | ✅ Yes | The name of the risk band (e.g. *Conservative*, *Moderate*, *Aggressive*). |
+| **Operator** | ✅ Yes | The comparison operator defining the band boundary. |
+| **Minimum Value (%)** | No | The lower boundary. Used with *Between* and *Greater than* operators. |
+| **Maximum Value (%)** | No | The upper boundary. Used with *Between* and *Less than* operators. |
+| **Interpretation** | ✅ Yes | A description of the risk band shown to reviewers in the score breakdown. |
+| **Recommendation** | No | An **Approve** or **Reject** recommendation for this band. |
+| **Color Code** | No | Display colour for this band. Defaults to auto based on recommendation. |
+| **Display Order** | No | Position of this threshold in the score breakdown relative to other thresholds. |
+
+Click **+ Add Threshold** to add a new band. Click the ✕ button on any existing threshold block to remove it.
+
+<Aside type="tip">
+  You can update thresholds independently of the main rule logic. For example, you can keep the same condition and points but refine the risk bands shown to reviewers without affecting how points are calculated.
+</Aside>
+
+---
+
+## Saving Changes
+
+<Steps>
+1. From the Scoring Rule Detail page, click **Edit**.
+2. Update the rule fields as needed.
+3. Toggle **Enable risk thresholds for this rule** to add, modify, or remove risk threshold bands.
+4. Click **Update Credit Scoring Rule** to save. Changes take effect immediately.
+5. To discard changes, click **Cancel** or **Back to Rules**.
+</Steps>
+
+<Aside type="caution">
+  Changes to an active rule take effect on the next application scored. Previously scored applications retain their original score — they are not retroactively recalculated. To rescore an existing application, edit and save it from the [Credit Applications](/guides/credit-applications) page.
+</Aside>

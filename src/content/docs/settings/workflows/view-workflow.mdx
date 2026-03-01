@@ -1,0 +1,65 @@
+---
+title: Workflow Detail
+description: A guide to the workflow detail page in SenteScore.
+sidebar:
+  order: 37
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Workflow Detail** page gives a full visual overview of a workflow's approval pipeline — showing every level, the role responsible, the authorised approvers, the approval requirement, and the escalation/arbitration path. It is the primary reference page for understanding how a workflow routes applications.
+
+Navigate to **Settings → Workflow Settings → Workflows** and click any workflow name.
+
+---
+
+![Workflow Detail page](/images/workflow-detail.png)
+
+## Page Header
+
+The header displays the workflow name, its **Active** status badge, and a brief description. Two buttons are available:
+
+| Button | Description |
+|---|---|
+| **Edit** | Opens the [Edit Workflow](/guides/edit-workflow) page to modify the workflow configuration. |
+| **Back** | Returns to the Workflows list. |
+
+---
+
+## Workflow Overview Panel
+
+The left panel shows key statistics for the workflow:
+
+| Field | Description |
+|---|---|
+| **Total Applications** | The number of workflow applications currently routed through this workflow. |
+| **Pipeline Depth** | The number of approval levels in the workflow (e.g. *3 Levels*). |
+
+A note at the bottom of the panel reminds users that *"Approvers will be notified sequentially based on the levels below."* — meaning Level 1 approvers are notified first and the application only advances to Level 2 once Level 1 is actioned.
+
+---
+
+## Approval Pipeline
+
+The right side of the page shows the full approval chain as a vertical pipeline. Each numbered step represents one level. The total step count is displayed in the top-right corner of the pipeline (e.g. *3 Steps Total*).
+
+Each level card shows:
+
+### Role & Approval Requirement
+
+| Element | Description |
+|---|---|
+| **Role Name** | The role assigned to this level (e.g. *Credit Officer*, *MSME Officer*, *Finance Officer*). Displayed as the level heading. |
+| **Approval Requirement badge** | The consensus rule for this level — e.g. `ANY ONE` means the first approver to act wins. |
+
+### Authorised Approvers
+
+A list of the specific users authorised to action applications at this level. Each approver is shown with their avatar initials and name (e.g. *Super Administrator*, *Credit Officer*).
+
+### Escalation / Arbitration
+
+The role designated to handle arbitration if an application is sent to arbitration at this level. Shown as the role name with the label **Rectification Authority**. If no arbitration path is defined for a level, it shows *"No arbitration path defined."*
+
+<Aside type="tip">
+  The Approval Pipeline view is the fastest way to verify that a workflow is correctly configured before it goes live. Check that every level has authorised approvers and, where needed, an escalation path defined.
+</Aside>

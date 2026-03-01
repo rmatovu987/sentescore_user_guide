@@ -1,0 +1,39 @@
+---
+title: Edit a Role
+description: A guide to editing a role in SenteScore.
+sidebar:
+  order: 18
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Administrators can edit a role to update its name or description at any time. Changes are reflected immediately across the platform and recorded in the role's [Timeline](/guides/role-detail#timeline).
+
+To edit a role, navigate to **Settings → Business Settings → Roles**, click the role **ID** to open the [Role Detail](/guides/role-detail) page, then click **Edit**.
+
+---
+
+![Edit Role modal](/images/edit-role.png)
+
+## Form Fields
+
+The **Edit Role** modal opens pre-populated with the role's current values.
+
+| Field | Required | Description |
+|---|---|---|
+| **Name** | ✅ Yes | The display name of the role. Updating this changes how the role appears in user assignments, workflow level configuration, and across the platform. |
+| **Description** | No | A short explanation of the role's purpose. |
+
+---
+
+## Saving Changes
+
+<Steps>
+1. From the Role Detail page, click **Edit**.
+2. Update the **Name** and/or **Description** as needed.
+3. Click **Update Role** to save. Changes take effect immediately.
+</Steps>
+
+<Aside type="note">
+  Editing a role's name or description does not affect the permissions assigned to it or the users it is assigned to. To modify permissions, use the **Permissions** section on the [Role Detail](/guides/role-detail) page directly.
+</Aside>

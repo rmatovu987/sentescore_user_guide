@@ -1,0 +1,48 @@
+---
+title: Invite a New User
+description: A guide to inviting a new user to SenteScore.
+sidebar:
+  order: 20
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Inviting a new user sends them an email with a link to set up their account and join your organisation on SenteScore. Only administrators can send invitations.
+
+Navigate to **Home → Settings → Business Settings → Invitations** and click **Invite new user** in the top-right corner.
+
+---
+
+![New Invitation modal](/images/create-invitation.png)
+
+## Form Fields
+
+| Field | Required | Description |
+|---|---|---|
+| **First Name** | ✅ Yes | The invitee's first name. |
+| **Last Name** | ✅ Yes | The invitee's last name. |
+| **Email Address** | ✅ Yes | The email address the invitation will be sent to. The invitee will use this address to log in. |
+| **Time Zone** | ✅ Yes | The invitee's local time zone, selected from a dropdown. This ensures timestamps and notifications are displayed correctly for the user. |
+| **Assigned Branch** | ✅ Yes | The branch the new user will be associated with, selected from the list of active branches. This determines which branch appears by default when they submit applications. |
+
+---
+
+## Sending the Invitation
+
+<Steps>
+1. Navigate to **Settings → Organization → Invitations** and click **Invite new user**.
+2. Enter the invitee's **First Name**, **Last Name**, and **Email Address**.
+3. Select their **Time Zone** from the dropdown.
+4. Select their **Assigned Branch**.
+5. Click **Create Invitation** to send. The invitation appears in the list immediately with a **Pending** status.
+</Steps>
+
+The invitee will receive an email with a link to complete their account setup. Once they accept, their status changes to **Accepted** and they become an active user.
+
+<Aside type="note">
+  After the user accepts the invitation, an administrator will need to assign them a **Role** to control their access and permissions across the platform.
+</Aside>
+
+<Aside type="tip">
+  If the invitee does not receive the email or the invitation expires, you can resend it from the [Invitation Detail](/guides/invitation-detail) page using the **Resend Invite** button.
+</Aside>

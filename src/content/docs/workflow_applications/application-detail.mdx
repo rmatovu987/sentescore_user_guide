@@ -1,0 +1,119 @@
+---
+title: Workflow Application Detail
+description: A guide to editing, submitting, and reviewing a workflow application through its approval levels in SenteScore.
+sidebar:
+  order: 9
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The **Workflow Application Detail** page is the central view for a single workflow application. From here, the initiator can edit or submit the application, and reviewers at each workflow level can approve, decline, or escalate it. The page updates in real time as the application moves through the approval chain.
+
+To access this page, click any application ID or title from the **Workflow Applications** list.
+
+---
+
+## Page Overview
+
+![Workflow Application Detail — full page](/images/details-workflow-application.png)
+
+The page is divided into a main content area and a right-hand sidebar that changes depending on who is viewing the application and what state it is currently in. The main area contains the following sections, each described below:
+
+- **Application Details**
+- **Applicant Information**
+- **Credit Scoring Data**
+- **Score Breakdown**
+- **Attachments**
+- **Activity Log**
+
+The right sidebar shows the **Required Action** panel (for reviewers) and the **Workflow Progress** tracker.
+
+---
+
+## Application Details
+
+The top section summarises the key facts about the workflow application itself.
+
+| Field | Description |
+|---|---|
+| **Initiator** | The user who created and submitted the application. |
+| **Workflow Type** | The name of the approval workflow this application is running through (e.g. *Loan Approval Workflow*). |
+| **Requested Amount** | The loan amount requested, displayed prominently in blue. |
+| **Purpose** | The stated reason for the loan (e.g. *Business*). |
+| **Description** | A narrative summary of the applicant and the loan request. |
+| **Credit Scoring Application** | A clickable link to the originating credit scoring record (e.g. `WJrGNP`), allowing reviewers to cross-reference the full scoring detail. |
+
+---
+
+## Applicant Information
+
+A read-only block showing the identity details of the loan applicant pulled from the linked credit scoring record.
+
+| Field | Description |
+|---|---|
+| **Name** | The applicant's full legal name. |
+| **Email** | The applicant's email address. |
+| **NIN** | The applicant's National Identification Number. |
+| **Phone Number** | The applicant's contact number. |
+| **Branch** | The branch the application is associated with. |
+
+---
+
+## Credit Scoring Data
+
+This section displays the raw financial data from the linked credit scoring application. These are the input values used to generate the credit score and are shown here as context for reviewers.
+
+Fields include DTI (Debt-to-Income ratio), ITI (Installment-to-Income ratio), Purpose, CRB Score, Net Income, Total Current Debt, Total Expenditures, Gross Monthly Income, Loan Application Amount, Proposed Monthly Payment, and Current Monthly Debt Installment.
+
+<Aside type="tip">
+  The specific fields shown here are determined by the scoring parameters configured by your administrators. Different organisations may see different fields.
+</Aside>
+
+---
+
+## Score Breakdown
+
+The **Score Breakdown** table gives reviewers a transparent, rule-by-rule explanation of exactly how the applicant's credit score was computed. Each row represents a single scoring rule evaluated against the application data.
+
+| Column | Description |
+|---|---|
+| **Rule** | The name and description of the scoring rule, the field it evaluates, and the criteria it applies (e.g. *"Gross monthly income should be greater than 100,000"*). A coloured badge links the rule to the source data field. |
+| **Field Value** | The actual value from the application that was tested against this rule. |
+| **Risk Assessment** | A qualitative risk band for rules with defined thresholds, including a label (e.g. `Low Risk`, `Conservative`), score range, description, and an `Approve` recommendation. Rules without thresholds show *"No thresholds defined"*. |
+| **Points Awarded** | The raw points this rule contributed based on the field value. |
+| **Normalized Points** | The weighted points after normalization, representing this rule's contribution to the final score. |
+
+The final row shows the **Total Score** — the sum of all normalized points, which is the credit score used to assess the application.
+
+<Aside type="note">
+  The Score Breakdown is a key tool for reviewers to understand and justify their decision. It shows exactly which factors contributed positively or negatively to the applicant's score.
+</Aside>
+
+---
+
+## Attachments
+
+The **Attachments** section lists all supporting documents uploaded with the application (e.g. *Bank / Mobile Money Statement for 6 months*). The section shows a count of uploaded files and supports two actions per attachment:
+
+- **Download** (↓ icon) — downloads the file to your device
+- **Delete** (🗑 icon) — removes the attachment from the application
+
+An **Upload** button allows additional documents to be added at any time, even after the application has been submitted.
+
+---
+
+## Activity Log
+
+The **Activity Log** at the bottom of the page is a chronological audit trail of every significant event on the application. Each entry records:
+
+| Column | Description |
+|---|---|
+| **Event** | A short label describing what happened (e.g. *Submitted — Application submitted*). |
+| **User** | The name of the user who triggered the event. |
+| **Time** | The exact timestamp of the event (e.g. *March 01, 2026 12:25 PM EAT*). |
+
+<Aside type="note">
+  The Activity Log is append-only and cannot be edited or deleted. It provides a complete, tamper-proof record of all actions taken on the application for compliance and audit purposes.
+</Aside>
+
+---

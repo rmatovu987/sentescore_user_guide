@@ -1,0 +1,81 @@
+---
+title: Credit Scoring Rules
+description: A guide to the Credit Scoring Rules list page in SenteScore.
+sidebar:
+  order: 28
+---
+
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+**Credit Scoring Rules** define how credit applications are evaluated and scored. Each rule targets a specific field, applies a condition against a threshold value, and awards or deducts points when that condition is met. The sum of all matched rule points becomes the applicant's credit score.
+
+Navigate here via **Home → Settings → Credit Scoring Settings → Credit Scoring Rules**.
+
+---
+
+![Credit Scoring Rules list](/images/credit-scoring-rules.png)
+
+## Page Overview
+
+The list displays all configured scoring rules with tabs to filter by status. A **New Rule** button in the top-right opens the rule creation form. Each row shows the full configuration of a rule at a glance, with inline action buttons for quick edits.
+
+---
+
+## Status Tabs
+
+<Tabs>
+  <TabItem label="All Rules">
+    Shows every scoring rule regardless of status. The count reflects the total number of rules configured.
+  </TabItem>
+  <TabItem label="Active">
+    Shows only rules that are currently active and being used in scoring calculations. Only active rules contribute points to a credit score.
+  </TabItem>
+  <TabItem label="Inactive">
+    Shows rules that have been disabled. Inactive rules are ignored during scoring but remain saved for future use.
+  </TabItem>
+</Tabs>
+
+---
+
+## Table Columns
+
+| Column | Description |
+|---|---|
+| **Field Name** | The field definition this rule evaluates (e.g. *Net Income*, *Debt to Income Ratio*). Click to open the [Scoring Rule Detail](/guides/scoring-rule-detail) page. |
+| **Conditions** | The operator and threshold value that must be met for the rule to award points (e.g. *Greater than → 100,000*, *Less than → 50%*). |
+| **Points** | The number of points awarded (positive) or deducted (negative) when the condition is met. Displayed in green for positive values. |
+| **Weight** | A multiplier applied to the points (default: `×1.0`). Used to increase or decrease the relative impact of a rule on the final score. |
+| **Thresholds** | Whether risk thresholds have been defined for this rule. Shows *None* if no thresholds are configured, or the count of defined thresholds (e.g. *4 defined*). |
+| **Status** | Whether the rule is **Active** or **Inactive**. |
+| **Actions** | Inline action icons: ✏️ Edit, 🛡 Toggle active/inactive, 🗑 Delete. |
+
+---
+
+## Understanding Rules
+
+A scoring rule is evaluated as:
+
+> **If** [Field] [Operator] [Value] → **award** [Points] × [Weight]
+
+For example:
+- *If `net_income` is Greater than `100,000` → award `+10` × `1.0` = **+10 points***
+- *If `debt_to_income_ratio` is Less than `50%` → award `+15` × `1.0` = **+15 points***
+
+Rules that do not match the condition award zero points. Only **Active** rules are included in scoring calculations.
+
+<Aside type="tip">
+  Use the **Weight** field to give certain rules more or less influence on the final score without changing the raw points value. For example, a rule with `+10` points and a weight of `2.0` contributes `+20` to the normalized score.
+</Aside>
+
+---
+
+## Search & Export
+
+Use the **search bar** to filter rules by field name. The **Export** button supports the following formats:
+
+- **PDF** — for documentation or compliance records
+- **Excel** — `.xlsx` for analysis or record-keeping
+- **CSV** — plain-text for importing into other tools
+- **Copy to Clipboard** — for quickly pasting into another application
+
+Use **Column Visibility** to show or hide specific columns.

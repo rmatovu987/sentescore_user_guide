@@ -1,0 +1,48 @@
+---
+title: Edit a Field Definition
+description: A guide to editing a field definition in SenteScore.
+sidebar:
+  order: 27
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Administrators can edit a field definition to update its label, type, data type, description, or display order. Changes take effect immediately and are reflected in the credit application form for all future applications.
+
+To access the edit page, navigate to **Settings → Credit Scoring Settings → Field Definitions**, click the field's **ID** to open the [Field Definition Detail](/guides/field-definition-detail) page, then click **Edit**.
+
+---
+
+![Edit Field Definition page](/images/edit-field-definition.png)
+
+## Form Fields
+
+The edit form is pre-populated with the field's current values. All fields are editable:
+
+| Field | Required | Description |
+|---|---|---|
+| **Field Name** | ✅ Yes | The internal `snake_case` system identifier (e.g. `gross_monthly_income`). Shown as a subtitle on the page for reference. |
+| **Field Label** | No | The human-readable label displayed on the application form (e.g. *Gross Monthly Income*). |
+| **Field Type** | ✅ Yes | **Direct Field** — value entered by the applicant. **Calculated Field** — value derived from other fields using a formula. |
+| **Data Type** | ✅ Yes | The expected value format for the field (e.g. *Integer*, *Decimal*, *String*). |
+| **Description** | No | Helper text shown below the field on the form (e.g. *Sum of all monthly incomes*). |
+| **Display Order** | No | Controls the position of the field on the application form. Lower numbers appear first. |
+
+---
+
+## Saving Changes
+
+<Steps>
+1. From the Field Definition Detail page, click **Edit**.
+2. Update the relevant fields as needed.
+3. Click **Update Field Definition** to save. Changes take effect immediately.
+4. To discard changes, click **Cancel** or **Back to Fields**.
+</Steps>
+
+<Aside type="caution">
+  Changing the **Field Type** from Direct to Calculated (or vice versa) may affect existing scoring rules that rely on this field's value. Review any dependent rules after making this change.
+</Aside>
+
+<Aside type="note">
+  The **Field Name** is shown as a read-only subtitle at the top of the edit page. If you need to change the field name itself, contact your system administrator — renaming a field key can break references in scoring formulas and rules.
+</Aside>

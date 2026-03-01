@@ -1,0 +1,72 @@
+---
+title: Create a Field Definition
+description: A guide to creating a new field definition in SenteScore.
+sidebar:
+  order: 25
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Creating a field definition adds a new data input to the **Application Data** section of the credit application form. Each field definition captures a specific piece of applicant or financial data that can be used in scoring rules.
+
+Navigate to **Home → Settings → Credit Scoring Settings → Field Definitions** and click **New Field Definition**.
+
+---
+
+![New Field Definition page](/images/new-field-definition.png)
+
+## Form Fields
+
+| Field | Required | Description |
+|---|---|---|
+| **Field Name** | ✅ Yes | The internal system identifier for the field. Must be in `snake_case` format (e.g. `monthly_income`, `crb_score`). This is the key used in scoring formulas and data storage. |
+| **Field Label** | No | The human-readable name displayed to users on the application form. Use normal case (e.g. *Monthly Income*, *CRB Score*). If left blank, the field name is used. |
+| **Field Type** | ✅ Yes | Controls how the field's value is sourced — see [Field Types](#field-types) below. |
+| **Data Type** | ✅ Yes | The format of the expected value — see [Data Types](#data-types) below. |
+| **Description** | No | A short helper text displayed below the field on the application form (e.g. *Sum of all monthly incomes*). Helps loan officers understand what to enter. |
+| **Display Order** | No | A numeric value controlling the position of the field on the application form relative to other fields. Lower numbers appear first. Defaults to `0`. |
+
+---
+
+## Field Types
+
+| Type | Description |
+|---|---|
+| **Direct Field** | The value is entered directly by the loan officer or applicant. Use this for fields like income, debt, and CRB score. |
+| **Calculated Field** | The value is automatically derived from other field values using a formula defined by the administrator. Use this for computed ratios like Debt-to-Income (DTI) or Installment-to-Income (ITI). |
+
+<Aside type="tip">
+  Use **Calculated Field** for any value that can be mathematically derived from other fields already on the form. This reduces manual data entry errors and ensures consistency.
+</Aside>
+
+---
+
+## Data Types
+
+The **Data Type** dropdown specifies the format of the value expected for this field. Common options include:
+
+| Data Type | Description |
+|---|---|
+| **Integer** | A whole number (e.g. `794`, `12`). |
+| **Decimal** | A number with decimal places (e.g. `1.96`, `0.73`). |
+| **String** | Free text (e.g. *Business*, *Employed*). |
+
+---
+
+## Creating the Field
+
+<Steps>
+1. Navigate to **Settings → Credit Scoring Settings → Field Definitions** and click **New Field Definition**.
+2. Enter the **Field Name** in `snake_case` format.
+3. Enter a **Field Label** in normal case for display on the form.
+4. Select the **Field Type** — Direct or Calculated.
+5. Select the **Data Type** appropriate for the field's expected values.
+6. Optionally add a **Description** and set the **Display Order**.
+7. Click **Create Field Definition** to save.
+</Steps>
+
+The new field immediately appears in the Field Definitions list and will be included in the **Application Data** section of the credit application form for all future applications.
+
+<Aside type="caution">
+  Field names must be unique and in `snake_case`. Once created, changing the field name may affect existing scoring rules that reference it by name. Plan your field names carefully before creating them.
+</Aside>

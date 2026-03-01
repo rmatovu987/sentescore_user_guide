@@ -1,0 +1,46 @@
+---
+title: Create a Branch
+description: A guide to creating a new branch in SenteScore.
+sidebar:
+  order: 12
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Branches represent the physical or operational units of your organisation. Creating a branch makes it available for selection when loan officers submit credit applications. Only administrators can create and manage branches.
+
+Navigate to **Home → Settings → Business Settings → Branches** and click the **New Branch** button in the top-right corner to open the creation modal.
+
+---
+
+![New Branch modal](/images/settings-branches-new.png)
+
+## Form Fields
+
+| Field | Required | Description |
+|---|---|---|
+| **Name** | ✅ Yes | The display name of the branch (e.g. *Kampala Branch*, *Mbarara Office*). This is the name loan officers will see in the branch dropdown when creating or editing a credit application. |
+| **Code** | No | A short internal reference code for the branch (e.g. `KLA-01`). Useful for reporting, reconciliation, or integration with external systems. |
+| **Is Main** | No | Check this box to designate the branch as the organisation's primary or headquarters branch. Only one branch can hold this designation at a time. |
+
+---
+
+## Creating the Branch
+
+<Steps>
+1. Navigate to **Settings → Business Settings → Branches** and click **New Branch**.
+2. Enter a **Name** for the branch.
+3. Optionally enter a **Code** for internal reference.
+4. Check **Is Main** if this should be the primary branch.
+5. Click **Create Branch** to save.
+</Steps>
+
+The new branch appears in the Branches list immediately and is set to **Active** by default, making it available for selection across the platform.
+
+<Aside type="note">
+  If you need to deactivate a branch or update its details after creation, click its ID from the Branches list to open the edit view.
+</Aside>
+
+<Aside type="caution">
+  Checking **Is Main** will replace any existing branch that currently holds the main designation. Confirm this is intentional before saving.
+</Aside>

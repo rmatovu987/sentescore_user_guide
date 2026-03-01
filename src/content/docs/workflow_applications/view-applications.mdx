@@ -1,0 +1,124 @@
+---
+title: Workflow Applications
+description: A guide to reviewing and managing workflow applications in SenteScore.
+sidebar:
+  order: 7
+---
+
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+The **Workflow Applications** page is where you review and manage all applications that have entered a configured approval workflow. Unlike the Credit Scoring Applications list — which tracks the scoring lifecycle — this page tracks the **approval chain lifecycle**, showing where each application sits within its multi-level review process.
+
+Navigate here via **Home → Workflow Applications** in the left sidebar.
+
+---
+
+![Workflow Applications page](/images/workflow-applications.png)
+
+## Page Overview
+
+Each row represents a loan application that has been routed into a workflow, showing its approval status, which workflow it belongs to, the loan amount, its current review level, and who submitted it.
+
+A **New Application from Scoring** button in the top-right allows authorised users to manually push a scored credit application into a workflow without going through the standard submission flow.
+
+---
+
+## Status Tabs
+
+The tabs at the top filter the list by the application's current workflow status. Each tab displays a live count.
+
+<Tabs>
+  <TabItem label="All">
+    The default view. Shows every workflow application regardless of status, giving a complete picture of the entire approval pipeline.
+  </TabItem>
+  <TabItem label="Draft">
+    Applications where the workflow record has been initialised but the approval process has not yet formally started. These are typically applications that have been created but not yet pushed into the review queue.
+  </TabItem>
+  <TabItem label="Pending">
+    Applications actively sitting in a review queue, awaiting action from the assigned reviewer at the current workflow level. These require attention from a loan officer or approver.
+  </TabItem>
+  <TabItem label="In Arbitration">
+    Applications that have been escalated due to a dispute or disagreement between reviewers. These require resolution by a higher authority before the workflow can proceed.
+  </TabItem>
+  <TabItem label="Approved">
+    Applications that have been approved at all required levels and have completed the workflow successfully.
+  </TabItem>
+  <TabItem label="Rejected">
+    Applications that were declined by a reviewer at one or more levels. The workflow stopped at the point of rejection.
+  </TabItem>
+  <TabItem label="Cancelled">
+    Applications that were manually withdrawn from the workflow before reaching a final decision — for example due to a duplicate submission, applicant withdrawal, or administrative intervention.
+  </TabItem>
+</Tabs>
+
+---
+
+## Filtering & Search Tools
+
+### Search Bar
+Type any keyword — applicant name, title, or ID — to instantly filter the list.
+
+### Date Range Filter
+The date picker (defaulting to `2000-01-01 – 2026-03-01`) filters applications by their **Submitted At** date. Use this to scope the list to a specific reporting period, such as a month-end review or quarterly audit.
+
+<Aside type="tip">
+  Combine the date filter with a status tab for precise reporting — for example, *"All applications approved in February"* by selecting the **Approved** tab and setting the date range accordingly.
+</Aside>
+
+### Export
+Downloads the current filtered view in your preferred format. Available export options are:
+
+- **PDF** — a formatted document suitable for printing or sharing with stakeholders
+- **Excel** — an `.xlsx` spreadsheet for further analysis or record-keeping
+- **CSV** — a plain-text format for importing into other tools or databases
+- **Copy to Clipboard** — instantly copies the table data for pasting into another application
+
+### Column Visibility
+Toggles individual columns on or off to keep the table focused on the data most relevant to you.
+
+---
+
+## Table Columns
+
+| Column | Description |
+|---|---|
+| **ID** | A unique short alphanumeric identifier for the workflow application (e.g. `OvMAvq`). Click it to open the full workflow application detail. |
+| **Title** | A human-readable name for the application, typically formatted as *"[Applicant Name]'s Loan Application"*. |
+| **Workflow** | The name of the workflow configuration this application is running through (e.g. *Loan Approval Workflow*). |
+| **Amount** | The loan amount requested in the application. |
+| **Status** | The current workflow status displayed as a colour-coded badge. See [Workflow Statuses](#workflow-statuses) below. |
+| **Current Level** | The approval level the application is currently at, along with the role assigned to review it at that level (e.g. *Level 1: No Role Assigned*, *Level 3: No Role Assigned*). |
+| **Submitted At** | The exact date and time the application entered the workflow. |
+| **Submitted By** | The user role that submitted the application into the workflow (e.g. *Super Administrator*). |
+
+All columns support **sorting** by clicking the column header.
+
+---
+
+## Workflow Statuses
+
+| Status | Colour | Meaning |
+|---|---|---|
+| **Draft** | ⚪ Grey | Workflow initialised but not yet active in the review queue. |
+| **Pending** | 🟡 Amber | Awaiting action from the reviewer at the current level. |
+| **In Arbitration** | 🔵 Blue | Escalated for dispute resolution by a higher authority. |
+| **Approved** | 🟢 Green | Approved at all levels — workflow complete. |
+| **Rejected** | 🔴 Red | Declined at one or more levels — workflow stopped. |
+| **Cancelled** | ⚪ Grey | Manually withdrawn before a final decision was reached. |
+
+---
+
+## Understanding Current Level
+
+The **Current Level** column shows which stage of the approval chain the application is at and which role is responsible for reviewing it at that stage.
+
+**Level 1: No Role Assigned** (or any level showing "No Role Assigned") can mean one of two things:
+
+- **No role has been configured** — the workflow level has not had a user role assigned to it in Settings. No one will be able to action the application until an administrator assigns the appropriate role under **Settings → Workflows**.
+- **A role is assigned but no one has acted yet** — the correct role is configured, but the users belonging to that role are yet to action the application (approve, reject, or send to arbitration). This is normal when an application has just entered that level and reviewers are yet to respond.
+
+<Aside type="caution">
+  If you suspect no role is configured for a level, contact your system administrator to verify the workflow setup in Settings. Applications cannot progress through a level that has no assigned role.
+</Aside>
+
+---

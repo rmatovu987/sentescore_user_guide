@@ -1,0 +1,134 @@
+---
+title: User Detail
+description: A guide to the user detail page and all available edits in SenteScore.
+sidebar:
+  order: 23
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The **User Detail** page is the central view for managing an individual user. It displays their personal details, contact information, address, assigned roles, attached branches, and a full audit timeline. Administrators can edit every aspect of a user's profile from this page.
+
+To access this page, navigate to **Settings → Business Settings → Users** and click any user's **ID** or **Name**.
+
+<Aside type="note">
+  User accounts are created automatically when an [invitation](/guides/invitations) is accepted. The timeline on this page captures the full creation history — including the user's initial status, name, time zone, email, and assigned branch — as recorded by the system at the moment the account was set up.
+</Aside>
+
+---
+
+![User Detail page](/images/user-detail.png)
+
+---
+
+## User Details
+
+The top panel shows the user's core account information alongside their profile photo:
+
+| Field | Description |
+|---|---|
+| **ID** | The unique short alphanumeric identifier for the user. |
+| **Encoded Key** | A longer system-generated key used internally. |
+| **Name** | The user's full name. |
+| **Email Address** | The user's primary login email. |
+| **Status** | Whether the account is **Active** or inactive. |
+| **Time Zone** | The user's configured time zone. |
+| **Assigned Branch** | The primary branch the user is associated with. |
+
+**Edit:** Click the **Edit** button in this panel to update the user's name, email address, time zone, assigned branch, or account status.
+
+---
+
+## User Contact
+
+The **User Contact** panel shows the user's contact details:
+
+| Field | Description |
+|---|---|
+| **Primary Phone Number** | The user's main contact number. |
+| **Primary Email** | The user's primary email (mirrors the account email). |
+| **Secondary Phone Number** | An optional secondary phone number. |
+| **Secondary Email** | An optional secondary email address. |
+
+**Edit:** Click the **Edit** button in this panel to update any of the contact fields — primary or secondary phone number and email address.
+
+---
+
+## User Address
+
+The **User Address** panel shows the user's registered address:
+
+| Field | Description |
+|---|---|
+| **Street Name** | The street address. |
+| **City** | The city. |
+| **Region** | The region or state. |
+| **Country** | The country code (e.g. `UG` for Uganda). |
+
+**Edit:** Click the **Edit** button in this panel to update the user's address details.
+
+---
+
+## User Roles
+
+The **User Roles** section lists all roles currently assigned to the user, displayed as a table with the role name, description, status, and a delete action.
+
+| Column | Description |
+|---|---|
+| **Name** | The role name (e.g. *Credit Officer*). |
+| **Description** | A brief description of the role's purpose. |
+| **Status** | Whether the role is currently Active. |
+| **Action** | A 🗑 delete icon to remove the role from the user. |
+
+**Assign Role:** Click the **Assign Role** button to open a modal and add an additional role to the user from the list of configured roles.
+
+<Aside type="caution">
+  Removing a role from a user immediately revokes any access permissions associated with that role. Ensure the user no longer needs that level of access before deleting it.
+</Aside>
+
+---
+
+## User Branches
+
+The **User Branches** section lists all branches the user is attached to, with the branch name, status, whether it is the main branch, and a delete action.
+
+| Column | Description |
+|---|---|
+| **Name** | The branch name (e.g. *Headquarter*). |
+| **Status** | Whether the branch is Active. |
+| **Is Main** | Whether this is the user's primary branch (`Yes` / `No`). |
+| **Action** | A 🗑 delete icon to detach the branch from the user. |
+
+**Attach Branch:** Click the **Attach Branch** button to associate an additional branch with the user.
+
+---
+
+## Summary of All Editable Areas
+
+| Section | What can be edited |
+|---|---|
+| **User Details** | Name, email address, time zone, assigned branch, account status |
+| **User Contact** | Primary phone, primary email, secondary phone, secondary email |
+| **User Address** | Street name, city, region, country |
+| **User Roles** | Assign new roles, remove existing roles |
+| **User Branches** | Attach new branches, remove existing branch associations |
+
+---
+
+## Timeline
+
+The **Timeline** panel on the right records every event related to the user account in reverse chronological order. Events include:
+
+| Event | Description |
+|---|---|
+| **Created User** | Captures the full account snapshot at creation — status, first name, last name, time zone, super user flag, email address, and assigned branch. |
+| **Created User Role** | Records the role ID and user ID when a role was assigned. |
+| **Created User Branch** | Records the user ID and branch ID when a branch was attached. |
+| **Created Contact** | Captures the primary email, secondary email, primary phone number, and secondary phone number at creation. |
+| **Created Address** | Captures the city, region, country, and street name at creation. |
+
+Each entry includes the **actor** (user or system process) and an exact **timestamp** with timezone.
+
+<Aside type="note">
+  The Timeline is append-only and cannot be modified, providing a complete and tamper-proof audit history of every change to the user account.
+</Aside>

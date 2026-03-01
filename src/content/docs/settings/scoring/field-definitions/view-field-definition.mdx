@@ -1,0 +1,61 @@
+---
+title: Field Definition Detail
+description: A guide to the field definition detail page in SenteScore.
+sidebar:
+  order: 26
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Field Definition Detail** page shows the full details of a single field definition and its audit history. From here administrators can edit the field or permanently delete it.
+
+Navigate to **Settings → Credit Scoring Settings → Field Definitions** and click the **ID** of any field definition.
+
+---
+
+![Field Definition Detail page](/images/field-definition-detail.png)
+
+## Field Details
+
+The detail panel shows all properties of the field definition as read-only:
+
+| Field | Description |
+|---|---|
+| **ID** | The unique short alphanumeric identifier for the field definition. |
+| **Encoded Key** | A longer system-generated key used internally. |
+| **Name** | The human-readable display name of the field (e.g. *Gross Monthly Income*). |
+| **Description** | The helper text shown below the field on the application form (e.g. *Sum of all monthly incomes*). |
+| **Field Type** | Whether the field is **Direct** (value entered by the user) or **Calculated** (value derived by formula). |
+| **Data Type** | The expected value format (e.g. *Integer*, *Decimal*, *String*). |
+
+---
+
+## Actions
+
+Two action buttons are available at the bottom of the detail panel:
+
+| Button | Colour | Description |
+|---|---|---|
+| **Destroy** | 🔴 Red | Permanently deletes the field definition. This is irreversible. |
+| **Edit** | 🔵 Blue | Opens the [Edit Field Definition](/guides/edit-field-definition) page to modify the field's properties. |
+
+<Aside type="caution">
+  **Destroy** permanently removes the field definition from the system. Any scoring rules that reference this field by name will be affected. Ensure the field is no longer in use before destroying it.
+</Aside>
+
+---
+
+## Timeline
+
+The **Timeline** panel on the right records every event related to the field definition. Each entry captures:
+
+| Field | Description |
+|---|---|
+| **Event** | The type of action (e.g. *Created Field Definition*). |
+| **Details** | A snapshot of the field data at the time of the event — Data Type, Field Name, Description, and Field Label. |
+| **Actor** | The user or system process that performed the action. |
+| **Timestamp** | The exact date and time of the event including timezone. |
+
+<Aside type="note">
+  The Timeline is append-only and cannot be modified. It provides a full audit history of every change to the field definition.
+</Aside>

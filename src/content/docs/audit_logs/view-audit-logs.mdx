@@ -1,0 +1,115 @@
+---
+title: Audit Trails
+description: A guide to reading and using the Audit Trails log in SenteScore.
+sidebar:
+  order: 10
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Audit Trails** page is a system-wide, immutable log of every significant action taken across the platform. Every time a record is created, updated, or a permission changes, an entry is automatically written here — capturing exactly what changed, who made the change, and when.
+
+Navigate here via **Home → Audit Trails** in the left sidebar under **System**.
+
+---
+
+![Audit Trails page](/images/audit-trails.png)
+
+## Page Overview
+
+The audit trail is presented as a paginated table with 654+ entries in a typical production environment. Entries are ordered most-recent-first. Each row represents a single recorded event, and some events — such as record creation — expand to show a detailed snapshot of all data at the time of the action.
+
+---
+
+## Table Columns
+
+| Column | Description |
+|---|---|
+| **Event** | A human-readable description of what occurred (e.g. *Created Credit Application*, *Updated Credit Application*, *Updated Role Permission*). |
+| **Record ID** | The short alphanumeric ID of the record that was affected (e.g. `WJrGNP`, `KJkAjd`). Clicking the ID opens the relevant record directly. |
+| **Actioned At** | The exact date and time the event occurred, including timezone (e.g. *March 01, 2026 12:04 PM EAT*). |
+| **User** | The name of the user who performed the action (e.g. *Super Administrator*). |
+| **Changes** | A summary of what changed. The format varies by event type — see [Understanding the Changes Column](#understanding-the-changes-column) below. |
+
+All columns support **sorting** by clicking the column header.
+
+---
+
+## Understanding the Changes Column
+
+The **Changes** column is the most information-dense part of the audit trail. Its format depends on the type of event recorded.
+
+### Field-level Updates
+
+For update events, the changes column records exactly which fields were modified and what the values changed from and to. Examples:
+
+- `Changed Status from Submitted to Approved`
+- `Changed Status from Pending to Submitted`
+- `Changed Can access from No to Yes`
+- `Changed Applicant data from {"dti" => "0.73", "iti" => "0.75", ...} to {...}`
+
+For applicant data changes, the full before-and-after JSON diff is recorded, giving a complete picture of every financial field that was modified in a single edit.
+
+### Creation Snapshots
+
+When a record is **created**, the Changes column expands into a full data snapshot including:
+
+| Field | Description |
+|---|---|
+| **User** | The user ID who created the record. |
+| **Branch** | The branch ID associated with the record. |
+| **Full name** | The applicant's name at time of creation. |
+| **Phone number** | The applicant's phone number at time of creation. |
+| **Email address** | The applicant's email at time of creation. |
+| **Applicant data** | The complete set of financial inputs (DTI, ITI, purpose, CRB score, net income, total debt, expenditures, gross income, loan amount, etc.) as a JSON object. |
+| **Score breakdown** | The full scoring rule evaluation snapshot — every rule, field value, points, and normalized points at the moment of creation. |
+| **Calculated score** | The credit score computed at creation (e.g. `60`). |
+| **National identification number** | Recorded as the field key `national_identification_number`. |
+
+<Aside type="note">
+  Creation snapshots capture the complete state of the record at the moment it was first saved. This means even if the record is later edited many times, the original data is always preserved in the audit trail.
+</Aside>
+
+### Permission Changes
+
+For permission-related events such as **Updated Role Permission**, the changes column records the specific permission that was modified:
+
+- `Changed Can access from No to Yes`
+
+---
+
+## Event Types
+
+| Event | Description |
+|---|---|
+| **Created Credit Application** | A new credit scoring application was created. Includes a full data snapshot. |
+| **Updated Credit Application** | An existing credit application was modified. Records field-level diffs. |
+| **Updated Role Permission** | A user role's access permissions were changed by an administrator. |
+
+<Aside type="tip">
+  The Record ID column links directly to the affected record. Click any ID to jump straight to the credit application, workflow application, or system record in question.
+</Aside>
+
+---
+
+## Search & Export
+
+### Search
+The search bar at the top-left filters the audit trail by keyword — useful for finding all events related to a specific record ID, user, or event type.
+
+### Export
+The audit trail can be exported in the following formats:
+
+- **PDF** — a formatted document suitable for compliance reporting or sharing with auditors
+- **Excel** — an `.xlsx` spreadsheet for deeper analysis
+- **CSV** — a plain-text format for importing into other tools or databases
+- **Copy to Clipboard** — instantly copies the current view for pasting into another application
+
+### Column Visibility
+Toggle individual columns on or off to focus the view on the data most relevant to your audit task.
+
+---
+
+<Aside type="caution">
+  Audit trail entries are system-generated and cannot be edited, deleted, or manually created. The log is append-only to ensure integrity for compliance and dispute resolution purposes.
+</Aside>

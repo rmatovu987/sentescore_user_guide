@@ -1,0 +1,47 @@
+---
+title: Edit a Document Type
+description: A guide to editing a document type in SenteScore.
+sidebar:
+  order: 35
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Administrators can edit a document type at any time to update its name, description, required flag, active status, or display order. Changes take effect immediately and are reflected on all credit application forms going forward.
+
+To edit a document type, navigate to **Home → Document Types**, click the document's **Name** to open the [Document Type Detail](/guides/document-type-detail) page, then click **Edit**.
+
+---
+
+![New Document Type page](/images/edit-document-type.png)
+
+## Form Fields
+
+The edit form is pre-populated with the document type's current values. All fields are editable:
+
+| Field | Required | Description |
+|---|---|---|
+| **Document Name** | ✅ Yes | The display name shown on the application form (e.g. *National ID*, *Proof of Income*). |
+| **Description** | No | Helper text explaining what the document should contain, shown to loan officers on the form. |
+| **Required Document** | No | Check to make the document mandatory before submission. Uncheck to make it optional. |
+| **Active** | No | Uncheck to hide the document type from application forms without deleting it. |
+| **Display Order** | No | Controls the position of this document in the Required Documents section. Lower numbers appear first. |
+
+---
+
+## Saving Changes
+
+<Steps>
+1. From the Document Type Detail page, click **Edit**.
+2. Update the relevant fields as needed.
+3. Click **Update Document Type** to save. Changes take effect immediately on all application forms.
+4. To discard changes, click **Cancel**.
+</Steps>
+
+<Aside type="caution">
+  Changing **Required Document** from unchecked to checked means loan officers will no longer be able to submit applications without uploading this document. Communicate this change to your team before enabling it.
+</Aside>
+
+<Aside type="note">
+  Unchecking **Active** hides the document type from the application form without deleting it or its history. This is the recommended approach over destroying a document type if you may need it again in the future.
+</Aside>

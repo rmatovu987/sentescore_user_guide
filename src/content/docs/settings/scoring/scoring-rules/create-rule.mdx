@@ -1,0 +1,98 @@
+---
+title: Create a Scoring Rule
+description: A guide to creating a new credit scoring rule in SenteScore.
+sidebar:
+  order: 29
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Creating a scoring rule tells SenteScore how to evaluate a specific field from a credit application and how many points to award when the condition is met. Rules are the core logic behind every credit score.
+
+Navigate to **Home → Settings → Credit Scoring Settings → Credit Scoring Rules** and click **New Rule**.
+
+---
+
+![New Scoring Rule page](/images/new-scoring-rule.png)
+
+## Rule Fields
+
+| Field | Required | Description |
+|---|---|---|
+| **Field Name** | ✅ Yes | The field definition this rule will evaluate, selected from a dropdown of all configured [Field Definitions](/guides/field-definitions). |
+| **Operator** | ✅ Yes | The comparison operator used to evaluate the field value against the threshold (e.g. *Greater than*, *Less than*, *Equal to*, *Between*). |
+| **Value** | No | The threshold value the field is compared against (e.g. `50000`, `0.5`). Not required for operators that don't need a comparison value. |
+| **Points** | ✅ Yes | The number of points to add (positive integer) or subtract (negative integer) when this rule's condition is matched. |
+| **Weight** | No | A multiplier for the points. Defaults to `1.0`. Use values greater than `1.0` to amplify impact or less than `1.0` to reduce it. |
+| **Active** | No | A checkbox controlling whether this rule participates in scoring calculations. Checked by default. Only active rules are used during scoring. |
+| **Description** | No | An optional explanation of what this rule evaluates and why. Shown in the score breakdown to help reviewers understand the rule's intent. |
+
+---
+
+## Rule Examples
+
+The form includes a built-in **Rule Examples** reference panel to help you understand how to configure rules correctly:
+
+| Example | Rule logic |
+|---|---|
+| **Income Rule** | If `annual_income` > 50,000 → award +100 points |
+| **DTI Rule** | If `debt_to_income_ratio` < 0.36 → award +75 points |
+| **Credit History** | If `credit_history_years` between 3 and 10 → award +50 points |
+| **Employment** | If `employment_status` in [full_time, self_employed] → award +30 points |
+
+---
+
+## Enabling Risk Thresholds
+
+Check the **Enable risk thresholds for this rule** checkbox to reveal the **Risk Thresholds** section below the main form. This allows you to define named risk bands for the rule's field — for example, categorising a DTI ratio into *Conservative*, *Moderate*, or *Aggressive* bands with interpretations and approval recommendations.
+
+When thresholds are enabled, the score breakdown on application detail pages will show the risk band the applicant falls into, a description, and an Approve or Reject recommendation for that band.
+
+See the [Risk Thresholds](#risk-thresholds) section below for full details on configuring thresholds.
+
+---
+
+## Risk Thresholds
+
+When **Enable risk thresholds for this rule** is checked, one or more risk threshold blocks appear. Each threshold defines a named risk band.
+
+![Risk Thresholds section](/images/scoring-rule-risk-thresholds.png)
+
+Each threshold block contains:
+
+| Field | Required | Description |
+|---|---|---|
+| **Risk Category** | ✅ Yes | The name of the risk band (e.g. *Conservative*, *Moderate*, *Aggressive*). |
+| **Operator** | ✅ Yes | The operator used to define the range boundary (e.g. *Less than*, *Between*, *Greater than*). |
+| **Minimum Value (%)** | No | The lower boundary of the range. Used with *Between* and *Greater than* operators. |
+| **Maximum Value (%)** | No | The upper boundary of the range. Used with *Between* and *Less than* operators. |
+| **Interpretation** | ✅ Yes | A human-readable description of what this risk band means (e.g. *Very strong affordability, acceptable for stable borrowers*). Shown in the score breakdown. |
+| **Recommendation** | No | Whether this band should trigger an **Approve** or **Reject** recommendation in the score breakdown. |
+| **Color Code** | No | The display colour for this band. Defaults to *Auto (based on recommendation)*. |
+| **Display Order** | No | Controls the order thresholds are shown in the score breakdown relative to other thresholds on the same rule. |
+
+Click **+ Add Threshold** to add additional risk bands to the same rule. Click the ✕ button on a threshold block to remove it.
+
+<Aside type="tip">
+  Define thresholds for ratio-based rules (like DTI and ITI) to give reviewers clear, contextualised risk labels in the score breakdown rather than raw numbers.
+</Aside>
+
+---
+
+## Creating the Rule
+
+<Steps>
+1. Navigate to **Settings → Credit Scoring Settings → Credit Scoring Rules** and click **New Rule**.
+2. Select the **Field Name** this rule will evaluate.
+3. Choose an **Operator** and enter a **Value** if required.
+4. Enter the **Points** to award when the condition is met.
+5. Adjust the **Weight** if needed (default: `1.0`).
+6. Ensure **Active** is checked if the rule should be used immediately.
+7. Optionally add a **Description** for reviewer context.
+8. If risk bands are needed, check **Enable risk thresholds for this rule** and configure one or more threshold blocks.
+9. Click **Create Credit Scoring Rule** to save.
+</Steps>
+
+<Aside type="caution">
+  Only **Active** rules are included in scoring calculations. Unchecking **Active** when creating a rule means it will be saved but will not affect any credit scores until it is activated.
+</Aside>

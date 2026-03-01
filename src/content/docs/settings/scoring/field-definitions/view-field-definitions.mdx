@@ -1,0 +1,50 @@
+---
+title: Field Definitions
+description: A guide to the Field Definitions list page in SenteScore.
+sidebar:
+  order: 24
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**Field Definitions** are the building blocks of the credit scoring form. Each field definition represents a single data point collected from a loan applicant — such as *Gross Monthly Income* or *CRB Score*. The fields you define here are what appear in the **Application Data** section when a loan officer creates or edits a credit application.
+
+Navigate here via **Home → Settings → Credit Scoring Settings → Field Definitions**.
+
+---
+
+![Field Definitions list](/images/field-definitions.png)
+
+## Page Overview
+
+The list displays all configured field definitions for your organisation. Each row represents one field, showing its name, label, type, data type, and status. A **New Field Definition** button in the top-right allows administrators to add new fields.
+
+<Aside type="note">
+  Any field you add, edit, or remove here will be reflected in the **Application Data** section of the credit application form. Changes affect all future applications immediately.
+</Aside>
+
+---
+
+## Table Columns
+
+| Column | Description |
+|---|---|
+| **ID** | The unique alphanumeric identifier for the field definition. Click to open the [Field Definition Detail](/guides/field-definition-detail) page. |
+| **Name** | The internal snake_case field name used by the system (e.g. `gross_monthly_income`). |
+| **Label** | The human-readable label displayed to users on the application form (e.g. *Gross Monthly Income*). |
+| **Field Type** | Whether the field is **Direct** (value entered by the applicant) or **Calculated** (value derived from other fields via a formula). |
+| **Data Type** | The expected data format for the field (e.g. *Integer*, *Decimal*, *String*). |
+| **Display Order** | The order in which the field appears on the application form relative to other fields. |
+
+---
+
+## Search & Export
+
+Use the **search bar** to filter field definitions by name or label. The **Export** button supports the following formats:
+
+- **PDF** — for documentation or compliance records
+- **Excel** — `.xlsx` for analysis or record-keeping
+- **CSV** — plain-text for importing into other systems
+- **Copy to Clipboard** — for quickly pasting into another application
+
+Use **Column Visibility** to show or hide specific columns in the table.

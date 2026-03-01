@@ -1,0 +1,74 @@
+---
+title: Role Detail
+description: A guide to the role detail page in SenteScore.
+sidebar:
+  order: 17
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Role Detail** page shows the full information for an individual role, its permission configuration, and a complete timeline of every change made to it. Administrators use this page to review and manage what a role can access across the platform.
+
+To access this page, navigate to **Settings → Business Settings → Roles** and click the **ID** of any role.
+
+---
+
+![Role Detail page](/images/role-detail.png)
+
+## Role Information
+
+The top section displays the role's core details as read-only fields:
+
+| Field | Description |
+|---|---|
+| **ID** | The unique short alphanumeric identifier for the role (e.g. `YjeWvM`). |
+| **Encoded Key** | A longer system-generated key used internally. |
+| **Name** | The display name of the role (e.g. *Super Admin*). |
+| **Description** | A short description of the role's purpose (e.g. *Super Administrator*). |
+
+Two action buttons are available:
+
+| Button | Description |
+|---|---|
+| **Edit** | Opens the [Edit Role](/guides/edit-role) modal to update the role's name or description. |
+| **Destroy** | Permanently deletes the role. This action is irreversible. |
+
+<Aside type="caution">
+  Use **Destroy** with extreme caution. Deleting a role that is assigned to users or workflow levels will disrupt access and approval routing. Ensure the role has been fully unassigned before destroying it.
+</Aside>
+
+---
+
+## Permissions
+
+The **Permissions** section controls what areas of the platform users assigned to this role can access. Permissions are grouped into four categories, each expandable to reveal granular access controls:
+
+| Permission Group | Description |
+|---|---|
+| **System** | Controls access to system-level configuration and administration features. |
+| **Workflow Management** | Controls access to workflow applications, approval actions, and workflow configuration. |
+| **Settings** | Controls access to the Settings area including branches, roles, users, and scoring parameters. |
+| **Scoring** | Controls access to credit scoring applications, score rules, and scoring reports. |
+
+Each group has a master checkbox on the right. When checked (✅), the role has access to that entire permission group. Click the `>` arrow to expand a group and toggle individual permissions within it.
+
+<Aside type="tip">
+  Changes to permissions take effect immediately. Users with the affected role will see their access updated on their next page load or login.
+</Aside>
+
+---
+
+## Timeline
+
+The **Timeline** panel on the right records every change made to the role and its permissions in reverse chronological order. Each entry captures:
+
+| Field | Description |
+|---|---|
+| **Event** | The type of change (e.g. *Updated Role Permission*, *Updated Role*, *Created Role Permission*). |
+| **Details** | Exactly what changed — for permissions, this shows the field (e.g. *Can access*) and the before/after values (e.g. *No → Yes*). For role status changes, it shows the old and new status (e.g. *Pending → Active*). For new permission entries, it records the Role ID, Can access value, Permission ID, and Permission node. |
+| **Actor** | The user or system process that made the change (e.g. *Super Administrator*, *System*). |
+| **Timestamp** | The exact date and time of the change including timezone. |
+
+<Aside type="note">
+  The Timeline is append-only and cannot be edited or deleted. It provides a full audit history of all role and permission changes for compliance purposes.
+</Aside>

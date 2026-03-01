@@ -1,0 +1,50 @@
+---
+title: Create a Document Type
+description: A guide to creating a new document type in SenteScore.
+sidebar:
+  order: 33
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Creating a document type adds a new upload requirement to the **Required Documents** section of the credit application form. Use this to define what supporting documents loan officers must or can optionally provide when submitting applications.
+
+Navigate to **Home → Document Types** and click **Add Document Type**.
+
+---
+
+![New Document Type page](/images/new-document-type.png)
+
+## Form Fields
+
+| Field | Required | Description |
+|---|---|---|
+| **Document Name** | ✅ Yes | The display name of the document as it will appear on the application form (e.g. *National ID*, *Proof of Income*, *Business License*). |
+| **Description** | No | A longer explanation of what the document should contain, shown as helper text to loan officers on the form (e.g. *Bank / Mobile Money Statement for 6 months*). |
+| **Required Document** | No | Check this box to make the document mandatory. When checked, loan officers must upload this document before they can submit the application. Unchecked means the document is optional. |
+| **Active** | No | Controls whether this document type appears on application forms. Checked by default. Uncheck to hide the document type from the form without deleting it. |
+| **Display Order** | No | A numeric value controlling where this document appears in the Required Documents section relative to others. Lower numbers appear first. Defaults to `0`. |
+
+---
+
+## Creating the Document Type
+
+<Steps>
+1. Navigate to **Home → Document Types** and click **Add Document Type**.
+2. Enter the **Document Name**.
+3. Optionally add a **Description** explaining what the document should contain.
+4. Check **Required Document** if this must be uploaded before submission.
+5. Ensure **Active** is checked for the document to appear on application forms.
+6. Set a **Display Order** if the position on the form matters.
+7. Click **Create Document Type** to save.
+</Steps>
+
+The new document type appears immediately in the list and will be shown in the **Required Documents** section of all credit application forms going forward.
+
+<Aside type="tip">
+  Use the **Display Order** field to arrange documents logically on the form — for example, putting identity documents first and financial statements later.
+</Aside>
+
+<Aside type="caution">
+  Setting a document as **Required** means no application can be submitted without it. Ensure this is appropriate for your workflow before enabling it.
+</Aside>

@@ -1,0 +1,54 @@
+---
+title: Users
+description: A guide to the Users list page in SenteScore.
+sidebar:
+  order: 22
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Users** page lists all active members of your organisation on SenteScore. Users are not created manually — a user account is automatically created when an [invitation](/guides/invitations) is accepted by the invitee.
+
+Navigate here via **Home → Settings → Business Settings → Users**.
+
+---
+
+![Users list page](/images/users.png)
+
+## Page Overview
+
+Each row represents one active user, showing their profile image, identity, contact details, activity, and a count of their assigned roles and branches. Click any user's **ID** or **Name** to open their [User Detail](/guides/user-detail) page.
+
+<Aside type="note">
+  Users only appear on this page after they have accepted their invitation and completed account setup. Pending invitations are tracked separately on the [Invitations](/guides/invitations) page.
+</Aside>
+
+---
+
+## Table Columns
+
+| Column | Description |
+|---|---|
+| **Image** | The user's profile avatar. |
+| **ID** | The unique alphanumeric identifier for the user. Click to open the User Detail page. |
+| **Name** | The user's full name. |
+| **Email** | The user's registered email address. |
+| **Time Zone** | The time zone assigned to the user, which controls how timestamps and notifications are displayed for them. |
+| **Status** | Whether the user account is **Active** or inactive. |
+| **Assigned Branch** | The primary branch the user is associated with. |
+| **Last Activity** | The date and time of the user's most recent action on the platform, or *No activity* if they have not yet logged in. |
+| **Roles** | The number of roles assigned to the user. |
+| **Branches** | The number of branches the user is attached to. |
+
+---
+
+## Search & Export
+
+Use the **search bar** to find users by name, email, or ID. The **Export** button supports the following formats:
+
+- **PDF** — for compliance records or HR reporting
+- **Excel** — `.xlsx` for analysis or record-keeping
+- **CSV** — plain-text for importing into other systems
+- **Copy to Clipboard** — for quickly pasting into another application
+
+Use **Column Visibility** to show or hide specific columns.

@@ -1,0 +1,97 @@
+---
+title: New Application from Scoring
+description: A guide to creating a workflow application from an existing credit scoring record in SenteScore.
+sidebar:
+  order: 8
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The **New Application from Scoring** modal allows you to create a workflow application by linking it to an existing, approved credit scoring record. Rather than entering applicant details manually, the form is auto-populated from the scoring record — saving time and ensuring consistency between the credit score and the workflow application.
+
+To open the modal, navigate to **Workflow Applications** and click the **New Application from Scoring** button in the top-right corner.
+
+---
+
+## How It Works
+
+The process starts with a single field: the **Credit Scoring Application Unique ID**. This is the short alphanumeric ID visible on any credit scoring application (e.g. `WJrGNP`). You can find this ID on the [Credit Application Detail](/guides/credit-application-detail) page next to the label *Unique ID*.
+
+As you type the ID, the system looks it up in real time. One of three outcomes will occur:
+
+---
+
+## Outcome 1 — Record Not Found
+
+![No scoring record found](/images/application-not-found.png)
+
+If the ID you entered does not match any credit scoring record in the system, an error message is shown in red:
+
+> **No scoring record found**
+
+The **Create Application** button remains disabled and you cannot proceed.
+
+**What to do:** Double-check the ID against the credit scoring application. IDs are case-sensitive — ensure no characters were missed, swapped, or incorrectly copied. Navigate to the [Credit Applications](/guides/credit-applications) list to locate the correct ID.
+
+---
+
+## Outcome 2 — Record Found but in an Invalid State
+
+![Scoring record not in valid state](/images/application-in-invalid-state.png)
+
+If the ID is correct but the credit scoring record has not yet been approved, the system shows a warning in orange:
+
+> **This scoring record is not in a valid state: pending**
+
+The **Create Application** button remains disabled and you cannot proceed.
+
+**What to do:** A workflow application can only be created from a scoring record that has been **approved**. Return to the [Credit Applications](/guides/credit-applications) list and ensure the scoring application has completed its approval process before attempting to create a workflow application from it.
+
+<Aside type="note">
+  The valid state required is **approved**. Records in `pending`, `submitted`, `review`, or `rejected` status cannot be used to create a workflow application.
+</Aside>
+
+---
+
+## Outcome 3 — Record Found and Valid
+
+![Scoring record found and form populated](/images/valid-application-found.png)
+
+If the ID is correct and the scoring record is in an approved state, the system confirms this with a green message:
+
+> **Credit application found**
+
+The form is then automatically populated with the details from the scoring record:
+
+| Field | Description |
+|---|---|
+| **Title** | Auto-generated as *"[Applicant Name]'s Loan Application"*. Editable. |
+| **Description** | A summary of the applicant and the loan request, auto-generated from the scoring record. Editable. |
+| **Amount** | The loan amount from the scoring record. Editable. |
+| **Purpose** | The stated purpose of the loan from the scoring record. Editable. |
+| **Workflow** | A dropdown to select which approval workflow this application should be routed through. |
+
+<Aside type="tip">
+  All pre-populated fields are editable before submission. Review each field and adjust any values as needed — for example, correcting the title, updating the amount, or changing the workflow — before clicking **Create Application**.
+</Aside>
+
+### Selecting a Workflow
+
+The **Workflow** dropdown lists all active workflows configured in your organisation. Select the workflow that best matches the loan product or approval chain required for this application. The application will be routed through the levels defined in that workflow once created.
+
+---
+
+## Creating the Application
+
+<Steps>
+1. Click **New Application from Scoring** from the Workflow Applications page.
+2. Enter the **Credit Scoring Application Unique ID** from the approved scoring record.
+3. Wait for the system to confirm *"Credit application found"* in green.
+4. Review the auto-populated fields — **Title**, **Description**, **Amount**, **Purpose** — and adjust if needed.
+5. Select the appropriate **Workflow** from the dropdown.
+6. Click **Create Application** to submit. The application enters the selected workflow immediately.
+</Steps>
+
+<Aside type="caution">
+  Once created, the workflow application enters the approval chain and cannot be linked back to a different scoring record. Ensure you have selected the correct scoring ID and workflow before clicking **Create Application**.
+</Aside>

@@ -1,0 +1,40 @@
+---
+title: Edit a Branch
+description: A guide to editing a branch in SenteScore.
+sidebar:
+  order: 14
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Administrators can edit a branch to update its name, internal code, or main designation at any time. Edits take effect immediately and are recorded in the branch's [Timeline](/guides/branch-detail#timeline).
+
+To edit a branch, navigate to **Settings → Business Settings → Branches**, click the branch **ID** to open the [Branch Detail](/guides/branch-detail) page, then click **Edit**.
+
+---
+
+![Edit Branch modal](/images/edit-branch.png)
+
+## Form Fields
+
+The **Edit Branch** modal opens pre-populated with the branch's current values.
+
+| Field | Required | Description |
+|---|---|---|
+| **Name** | ✅ Yes | The display name of the branch as it appears across the platform. |
+| **Code** | No | A short internal reference code (e.g. `HQ`). |
+| **Is Main** | No | Check to designate this as the primary branch. Uncheck to remove the designation. |
+
+---
+
+## Saving Changes
+
+<Steps>
+1. From the Branch Detail page, click **Edit**.
+2. Update the **Name**, **Code**, or **Is Main** checkbox as needed.
+3. Click **Update Branch** to save. The branch detail panel updates immediately.
+</Steps>
+
+<Aside type="caution">
+  Checking **Is Main** will transfer the primary branch designation away from whichever branch currently holds it. Ensure this is intentional before saving.
+</Aside>

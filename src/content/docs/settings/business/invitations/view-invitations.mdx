@@ -1,0 +1,60 @@
+---
+title: Invitations
+description: A guide to managing user invitations in SenteScore.
+sidebar:
+  order: 19
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Invitations** page shows all users who have been invited to join your organisation on SenteScore. Invitations are the primary way to onboard new team members — an email is sent to the invitee with a link to set up their account.
+
+Navigate here via **Home → Settings → Business Settings → Invitations**.
+
+---
+
+![Invitations page](/images/invitations.png)
+
+## Page Overview
+
+The table lists all sent invitations alongside the invitee's details and the current status of their invitation. A **Invite new user** button in the top-right opens the invitation form.
+
+---
+
+## Table Columns
+
+| Column | Description |
+|---|---|
+| **ID** | The unique alphanumeric identifier for the invitation. Click it to open the [Invitation Detail](/guides/invitation-detail) page. |
+| **First Name** | The invitee's first name as entered during the invitation. |
+| **Last Name** | The invitee's last name. |
+| **Email** | The email address the invitation was sent to. |
+| **Time Zone** | The time zone assigned to the invitee at the time of invitation. |
+| **Status** | The current state of the invitation — see [Invitation Statuses](#invitation-statuses) below. |
+
+---
+
+## Invitation Statuses
+
+| Status | Meaning |
+|---|---|
+| **Pending** | The invitation has been sent but the invitee has not yet accepted it and set up their account. |
+| **Accepted** | The invitee has clicked the invitation link, completed registration, and is now an active user. |
+| **Expired** | The invitation link has expired before the invitee accepted it. A new invitation can be resent from the [Invitation Detail](/guides/invitation-detail) page. |
+
+<Aside type="tip">
+  If an invitee has not accepted their invitation, you can resend it from the Invitation Detail page by clicking the invitation ID and using the **Resend Invite** button.
+</Aside>
+
+---
+
+## Search & Export
+
+Use the **search bar** to filter invitations by name, email, or ID. The **Export** button supports the following formats:
+
+- **PDF** — for compliance records or sharing with stakeholders
+- **Excel** — `.xlsx` for record-keeping or analysis
+- **CSV** — plain-text for importing into other tools
+- **Copy to Clipboard** — for quickly pasting into another application
+
+Use **Column Visibility** to show or hide specific columns in the table.

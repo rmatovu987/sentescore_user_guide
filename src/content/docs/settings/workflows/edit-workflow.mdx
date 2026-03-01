@@ -1,0 +1,90 @@
+---
+title: Edit a Workflow
+description: A guide to editing an existing approval workflow in SenteScore.
+sidebar:
+  order: 39
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Administrators can edit a workflow at any time to update its name, description, active status, or the configuration of any approval level — including roles, approvers, checklists, and action options. Changes take effect immediately for any new applications entering the workflow.
+
+Navigate to **Settings → Workflow Settings → Workflows**, click the workflow name to open the [Workflow Detail](/guides/workflow-detail) page, then click **Edit**.
+
+---
+
+![Edit Workflow page](/images/edit-workflow.png)
+
+## Workflow Information
+
+The top section is pre-populated with the workflow's current values:
+
+| Field | Required | Description |
+|---|---|---|
+| **Name** | ✅ Yes | The display name of the workflow. |
+| **Description** | No | A summary of the workflow's purpose. |
+| **Active** | No | Uncheck to deactivate the workflow without deleting it. Inactive workflows are not available for new workflow applications. |
+
+---
+
+## Editing Approval Levels
+
+Each existing level is displayed as a pre-populated level block. You can modify any sub-section of any level, add new levels with **+ Add Approval Level**, or remove levels using the ✕ button on the level card.
+
+### Role & Approval Requirement
+
+| Field | Description |
+|---|---|
+| **Role** | The role assigned to this level. Change this to reassign which users can action applications here. |
+| **Approval Requirement** | **Any One Approver** (first to act wins), **All** (unanimous), or **Specific Number** (weighted majority). |
+
+### Approvers
+
+The list of specific users authorised to action at this level. Pre-populated with existing approvers.
+
+- Use the approver dropdown to change a specific approver.
+- Click **+ Add Approver** to add additional approvers.
+- Click the ✕ button next to any approver to remove them from the level.
+
+<Aside type="caution">
+  Removing an approver from a level takes effect immediately. If an application is currently waiting at that level, the removed approver will no longer see it in their queue.
+</Aside>
+
+### Approval Checklist
+
+The list of pre-configured verification tasks for this level. Each task shows its label and a **Required?** checkbox.
+
+- Edit a task's label by typing directly in the text field.
+- Toggle **Required?** to make a task mandatory or optional.
+- Click **+ Add Checklist Task** to add a new verification item.
+- Click the ✕ button next to a task to remove it.
+
+<Aside type="note">
+  Checklist changes affect all applications that reach this level after saving. Applications already sitting at this level will see the updated checklist on their next review.
+</Aside>
+
+### Action Options
+
+| Field | Description |
+|---|---|
+| **Action when approved** | The level to route the application to after approval. Change this to redirect the approval path (e.g. skip a level or route to a specific level). Leave blank to use the default next level. |
+| **Arbitration Level (Optional)** | The level to send the application to if an approver chooses Send to Arbitration. Updating this redirects future arbitrations. |
+| **Allow approvers to add comments** | Toggle whether approvers can add free-text comments when actioning. |
+| **Require comments for approval/decline** | Toggle whether a comment is mandatory before an approver can act. |
+
+---
+
+## Saving Changes
+
+<Steps>
+1. From the Workflow Detail page, click **Edit**.
+2. Update the **Workflow Information** fields as needed.
+3. Modify any approval level — role, approvers, checklist tasks, or action options.
+4. Add new levels with **+ Add Approval Level** or remove existing ones with ✕.
+5. Click **Update Workflow** to save. Changes take effect immediately.
+6. To discard all changes, click **Cancel** or **Back to Workflows**.
+</Steps>
+
+<Aside type="caution">
+  Changes to an active workflow take effect immediately for all new applications entering it. Applications already in progress will continue through the workflow configuration that was active when they were submitted. Structural changes — like removing a level — may cause routing inconsistencies for in-progress applications. Plan changes carefully.
+</Aside>

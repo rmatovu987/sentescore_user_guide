@@ -1,0 +1,101 @@
+---
+title: Create a Workflow
+description: A guide to creating a new approval workflow in SenteScore.
+sidebar:
+  order: 38
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Creating a workflow defines the approval chain that loan applications must pass through. You configure the workflow's name, then build out each approval level — assigning roles, approvers, checklists, and escalation paths.
+
+Navigate to **Settings → Workflow Settings → Workflows** and click **+ New Workflow**.
+
+---
+
+![New Workflow page](/images/new-workflow.png)
+
+## Workflow Information
+
+The top section captures the workflow's basic details:
+
+| Field | Required | Description |
+|---|---|---|
+| **Name** | ✅ Yes | The display name of the workflow (e.g. *Loan Approval Workflow*, *Microfinance Workflow*). This is shown when selecting a workflow for a new workflow application. |
+| **Description** | No | A summary of the workflow's purpose (e.g. *Multi-level loan approval process with arbitration for declined applications*). |
+| **Active** | No | Controls whether this workflow is visible and available for use. Checked by default. Uncheck to save the workflow as a draft without making it available. |
+
+---
+
+## Approval Levels
+
+The **Approval Levels** section is where you define the sequential steps of the approval chain. Click **+ Add Approval Level** to add levels. Each level is labelled *Level 1*, *Level 2*, etc. and can be removed using the ✕ button on the level card.
+
+<Aside type="note">
+  Each level can have one or more approvers with specific roles. Approvers are notified sequentially — Level 1 first, then Level 2 only after Level 1 is actioned, and so on.
+</Aside>
+
+Each approval level block contains four sub-sections:
+
+---
+
+### 1. Role & Approval Requirement
+
+| Field | Required | Description |
+|---|---|---|
+| **Role** | ✅ Yes | The role responsible for reviewing applications at this level, selected from configured roles. Only users assigned this role will be able to action applications at this level. |
+| **Approval Requirement** | ✅ Yes | How many approvers must act before the application moves to the next level: **Any One Approver** (first to act wins), **All** (unanimous agreement required), or **Specific Number** (a weighted majority). |
+
+---
+
+### 2. Approvers
+
+The **Approvers** sub-section lists the individual users authorised to action applications at this level.
+
+- Click **+ Add Approver** to add a user to this level's approver list.
+- Each added approver is shown as a dropdown — select the specific user from the list of users who hold the assigned role.
+- Click the ✕ button next to an approver to remove them.
+
+<Aside type="tip">
+  You can add multiple approvers to a level. The **Approval Requirement** setting then controls whether any one of them, all of them, or a specific number must act before advancing.
+</Aside>
+
+---
+
+### 3. Approval Checklist
+
+The **Approval Checklist** defines mandatory verification tasks that an approver must complete before they can approve or decline an application at this level. These items appear as the **Verification Checklist** in the reviewer's Required Action panel on the workflow application page.
+
+- Click **+ Add Checklist Task** to add a new task (e.g. *Verify authenticity of NIN from NIRA*, *Verify CRB Score from Credit Bureau*).
+- Each task has a **Required?** checkbox — when checked, the approver must tick this item before the approval/decline buttons become active.
+- Click the ✕ button on a task to remove it.
+
+---
+
+### 4. Action Options
+
+The **Action Options** sub-section configures what happens after an approver actions an application at this level.
+
+| Field | Description |
+|---|---|
+| **Action when approved** | The level to send the application to after approval at this level. Leave blank to automatically send to the next level in the workflow. Can be used to skip levels or route to a specific level conditionally. |
+| **Arbitration Level (Optional)** | The level to route the application to if an approver chooses **Send to Arbitration**. The approver at the arbitration level will have three options: Approve, Decline, or Send to Arbitration again. |
+| **Allow approvers to add comments** | When checked, approvers can add free-text comments when actioning the application. These are recorded in the application's activity log. |
+| **Require comments for approval/decline** | When checked, approvers must enter a comment before they can approve or decline. Useful for audit trails that require documented reasoning. |
+
+---
+
+## Creating the Workflow
+
+<Steps>
+1. Navigate to **Settings → Workflow Settings → Workflows** and click **+ New Workflow**.
+2. Enter the workflow **Name** and optionally a **Description**.
+3. Ensure **Active** is checked if the workflow should be available immediately.
+4. Configure **Level 1** — assign a **Role**, set the **Approval Requirement**, add **Approvers**, define any **Checklist Tasks**, and configure **Action Options**.
+5. Click **+ Add Approval Level** to add further levels and repeat the configuration for each.
+6. Click **Create Workflow** to save.
+</Steps>
+
+<Aside type="caution">
+  A workflow level with no approvers added will show as *"No Role Assigned"* in the Workflow Progress tracker on application pages, and no one will be notified to review the application at that level. Always add at least one approver per level.
+</Aside>

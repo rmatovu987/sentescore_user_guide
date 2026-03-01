@@ -1,0 +1,135 @@
+---
+title: Workflow Application Detail
+description: A guide to editing, submitting, and reviewing a workflow application through its approval levels in SenteScore.
+sidebar:
+  order: 9
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The **Workflow Application Detail** page is the central view for a single workflow application. From here, the initiator can edit or submit the application, and reviewers at each workflow level can approve, decline, or escalate it. The page updates in real time as the application moves through the approval chain.
+
+To access this page, click any application ID or title from the **Workflow Applications** list.
+
+---
+
+## Page Overview
+
+The page is divided into a main content area and a right-hand **Required Action** sidebar that changes depending on who is viewing the application and what state it is currently in.
+
+The main area contains three sections:
+
+- **Application Details** — title, initiator, workflow type, requested amount, purpose, description, and a link to the originating credit scoring application
+- **Applicant Information** — name, email, NIN, phone number, and branch
+- **Credit Scoring Data** — the financial data carried over from the linked scoring record (DTI, ITI, CRB score, purpose, etc.)
+
+The right sidebar shows the **Workflow Progress** — a visual list of every level in the approval chain (e.g. Level 1: Credit Officer → Level 2: MSME Officer → Level 3: Finance Officer) with status indicators showing which levels are complete and which is currently active.
+
+---
+
+## 1. Editing the Application
+
+When an application is in **Draft** status, the initiator can edit its details before submitting it for approval.
+
+![Workflow Application Detail — Draft state](/images/submit-workflow-application-for-approval.png)
+
+Click the **Edit** button in the top-right corner to open the **Editing Application** modal.
+
+![Editing Application modal](/images/edit-workflow-application.png)
+
+The modal allows you to update the following fields:
+
+| Field | Description |
+|---|---|
+| **Title** | The display name of the workflow application. |
+| **Description** | A summary of the applicant and the loan request. |
+| **Amount** | The requested loan amount. |
+| **Purpose** | The intended use of the loan. |
+| **Workflow** | The approval workflow this application is routed through. Can be changed at this stage. |
+
+Once you are satisfied with the details, click **Update Application** to save. The application remains in **Draft** status until it is explicitly submitted for approval.
+
+<Aside type="note">
+  Editing is only available while the application is in **Draft** status. Once submitted for approval, the edit option is removed and the initiator can no longer modify the application.
+</Aside>
+
+---
+
+## 2. Submitting for Approval
+
+When the application is ready, the initiator must formally submit it to begin the approval process. While in **Draft** status, the right-hand sidebar shows a **Required Action** panel with a single button:
+
+> **Submit for Approval**
+
+![Submit for Approval](/images/submit-workflow-application-for-approval.png)
+
+<Steps>
+1. Review all application details, applicant information, and credit scoring data to confirm everything is accurate.
+2. Click **Submit for Approval** in the **Required Action** panel on the right.
+3. The application status changes from **Draft** to **Pending** and is routed to the first level of the workflow.
+4. The **Workflow Progress** panel updates to show **Level 1** as active with a *"Waiting for action…"* indicator.
+</Steps>
+
+<Aside type="caution">
+  Submitting for approval is irreversible. The initiator loses edit access immediately. Ensure all details are final before submitting.
+</Aside>
+
+---
+
+## 3. Reviewing the Application
+
+Once an application is in **Pending** status, it enters the review stage. Each level of the workflow is handled by users assigned to the corresponding role. Reviewers only see the action panel for the level they are responsible for, and only when the application has reached that level.
+
+![Application in review — Pending state](/images/review-workflow-application.png)
+
+The **Required Action** panel for a reviewer contains three components:
+
+### Verification Checklist
+
+Before making a decision, the reviewer may be required to complete a **Verification Checklist** — a set of mandatory checks configured by administrators for that workflow level. Each item is marked as **Required** and must be ticked before the decision buttons become active.
+
+Examples of checklist items:
+- *Verify authenticity of NIN from NIRA*
+- *Verify CRB Score from Credit Bureau*
+
+<Aside type="note">
+  The checklist items are configured per workflow level by administrators. Different levels may have different verification requirements.
+</Aside>
+
+### Decision Notes
+
+A free-text **Decision Notes** field allows the reviewer to record the reasoning behind their decision. This is optional but strongly recommended, especially for declines or escalations, as it is captured in the application's audit trail.
+
+### Decision Buttons
+
+After completing the checklist, the reviewer can take one of three actions:
+
+| Action | Button colour | Outcome |
+|---|---|---|
+| **Approve** | 🟢 Green | The application is approved at the current level and advances to the next level in the workflow. The level's status updates to approved and the next level becomes active. |
+| **Decline** | 🔴 Red | The application is rejected at this level. The workflow stops immediately, the application status changes to **Rejected**, and no further levels are processed. |
+| **Send to Arbitration** | 🟡 Amber | The application is escalated for dispute resolution. The application status changes to **In Arbitration** and requires intervention from a higher authority before the workflow can continue. |
+
+---
+
+## Workflow Progress
+
+The **Workflow Progress** panel on the right provides a live view of the entire approval chain. Each level is listed with the role responsible for it.
+
+- A **clock icon** with no sub-label indicates the level has not yet been reached.
+- A **clock icon** with *"Waiting for action…"* in orange indicates the level is currently active and awaiting a reviewer decision.
+- A completed level is visually marked once a decision has been made.
+
+### Full Approval
+
+An application is considered **fully approved** only when it has been approved at every level of the workflow, up to and including the final level. For example, in a three-level workflow:
+
+1. Approved at **Level 1: Credit Officer** → advances to Level 2
+2. Approved at **Level 2: MSME Officer** → advances to Level 3
+3. Approved at **Level 3: Finance Officer** → workflow complete, application status changes to **Approved**
+
+If the application is declined at any level, the workflow ends at that point and does not proceed to subsequent levels.
+
+<Aside type="tip">
+  You can track exactly which level an application is at, and which levels have already been completed, by checking the **Workflow Progress** panel on any application's detail page.
+</Aside>

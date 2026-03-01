@@ -1,0 +1,59 @@
+---
+title: Document Type Detail
+description: A guide to the document type detail page in SenteScore.
+sidebar:
+  order: 34
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Document Type Detail** page shows the full configuration of a single document type and its audit timeline. Administrators can edit or permanently delete a document type from this page.
+
+Navigate to **Home → Document Types** and click the **Name** of any document type.
+
+---
+
+![Document Type Detail page](/images/document-type-details.png)
+
+## Document Type Details
+
+The detail panel shows all properties as read-only fields:
+
+| Field | Description |
+|---|---|
+| **ID** | The unique short alphanumeric identifier for the document type. |
+| **Encoded Key** | A longer system-generated key used internally. |
+| **Name** | The display name of the document type (e.g. *Bank / Mobile Money Statement for 6 months*). |
+| **Description** | The helper text shown on the application form explaining what the document should contain. |
+| **Required** | Whether the document must be uploaded before submission. Displays **Yes** in green if mandatory. |
+| **Status** | Whether the document type is **Active** (visible on application forms) or inactive. |
+
+---
+
+## Actions
+
+| Button | Colour | Description |
+|---|---|---|
+| **Destroy** | 🔴 Red | Permanently deletes the document type. This is irreversible. Existing applications that already have this document uploaded are not affected, but the requirement will no longer appear on new application forms. |
+| **Edit** | 🔵 Blue | Opens the edit page to update the document type's name, description, required flag, active status, or display order. |
+
+<Aside type="caution">
+  Destroying a document type removes it from all credit application forms immediately. Any applications already in progress that reference this document will retain their uploaded file, but new applications will no longer show this requirement.
+</Aside>
+
+---
+
+## Timeline
+
+The **Timeline** panel on the right records every event related to the document type. Each entry captures:
+
+| Field | Description |
+|---|---|
+| **Event** | The type of action (e.g. *Created Document Type*). |
+| **Details** | A snapshot of the document type data at the time of the event — Name, Required flag, and Description. |
+| **Actor** | The user or system process that performed the action. |
+| **Timestamp** | The exact date and time including timezone. |
+
+<Aside type="note">
+  The Timeline is append-only and cannot be modified. It provides a full audit history of every change to the document type configuration.
+</Aside>

@@ -1,0 +1,67 @@
+---
+title: Branches
+description: A guide to managing branches in SenteScore.
+sidebar:
+  order: 11
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Branches** page allows administrators to manage the physical or operational branches within their organisation. Branches are used to categorise credit applications by location or business unit — every application must be assigned to a branch at the time of submission.
+
+Navigate here via **Home → Settings → Business Settings → Business Settings → Branches**.
+
+---
+
+![Branches page](/images/settings-branches.png)
+
+## Page Overview
+
+The page displays a table of all configured branches. A **New Branch** button in the top-right allows administrators to add new branches as the organisation grows.
+
+---
+
+## Table Columns
+
+| Column | Description |
+|---|---|
+| **ID** | The unique alphanumeric identifier for the branch. Click it to open the branch detail and edit it. |
+| **Name** | The display name of the branch (e.g. *Headquarter*). This is the name shown in dropdowns across the platform when submitting applications. |
+| **Is Main** | Indicates whether this branch is designated as the primary or headquarters branch. Only one branch can be the main branch (`Yes`). |
+| **Status** | Whether the branch is currently **Active** or inactive. Only active branches appear as options when creating or editing a credit application. |
+
+---
+
+## Branch Statuses
+
+| Status | Meaning |
+|---|---|
+| **Active** | The branch is live and available for selection when submitting credit applications. |
+| **Inactive** | The branch has been disabled. It will not appear in branch dropdowns and cannot be assigned to new applications. |
+
+<Aside type="caution">
+  Deactivating a branch does not affect existing applications already assigned to it. However, no new applications can be submitted to an inactive branch.
+</Aside>
+
+---
+
+## The Main Branch
+
+The **Is Main** flag designates one branch as the organisation's primary branch (e.g. *Headquarter*). This is typically the head office or the default branch used for applications that do not belong to a specific regional office.
+
+<Aside type="note">
+  Only one branch can be marked as the main branch at any time.
+</Aside>
+
+---
+
+## Search & Export
+
+Use the **search bar** to filter branches by name or ID. The **Export** button supports the following formats:
+
+- **PDF** — for printing or sharing with stakeholders
+- **Excel** — `.xlsx` for record-keeping or analysis
+- **CSV** — plain-text for importing into other systems
+- **Copy to Clipboard** — for quickly pasting into another application
+
+Use **Column Visibility** to show or hide specific columns in the table.

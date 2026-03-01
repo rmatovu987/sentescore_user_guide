@@ -1,0 +1,50 @@
+---
+title: Workflows
+description: A guide to the Workflows list page in SenteScore.
+sidebar:
+  order: 36
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**Workflows** define the multi-level approval chains that loan applications must pass through before a final decision is reached. Each workflow consists of one or more approval levels, each assigned to a role, with configurable approvers, checklists, and escalation paths.
+
+Navigate here via **Home → Settings → Workflow Settings → Workflows**.
+
+---
+
+![Workflows list](/images/workflows.png)
+
+## Page Overview
+
+The list displays all configured workflows in your organisation. A **+ New Workflow** button in the top-right opens the creation form. Each row shows the workflow at a glance with inline action buttons for quick access.
+
+---
+
+## Table Columns
+
+| Column | Description |
+|---|---|
+| **Name** | The display name of the workflow (e.g. *Loan Approval Workflow*). Click to open the [Workflow Detail](/guides/workflow-detail) page. |
+| **Description** | A short summary of the workflow's purpose. |
+| **Levels** | A badge showing how many approval levels the workflow contains (e.g. `3 levels`). |
+| **Applications** | The total number of workflow applications currently running through this workflow. |
+| **Status** | Whether the workflow is **Active** (available for use) or inactive. |
+| **Actions** | Inline icons: ✏️ Edit, 📋 Duplicate, 🗑 Delete. |
+
+<Aside type="note">
+  Only **Active** workflows are available for selection when creating a new workflow application from a credit scoring record.
+</Aside>
+
+---
+
+## Search & Export
+
+Use the **search bar** to find workflows by name. The **Export** button supports the following formats:
+
+- **PDF** — for documentation or compliance records
+- **Excel** — `.xlsx` for analysis or record-keeping
+- **CSV** — plain-text for importing into other tools
+- **Copy to Clipboard** — for quickly pasting into another application
+
+Use **Column Visibility** to show or hide specific columns.

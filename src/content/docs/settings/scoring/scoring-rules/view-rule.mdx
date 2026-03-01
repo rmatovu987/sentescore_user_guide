@@ -1,0 +1,62 @@
+---
+title: Scoring Rule Detail
+description: A guide to the credit scoring rule detail page in SenteScore.
+sidebar:
+  order: 30
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Scoring Rule Detail** page shows the full configuration of a single credit scoring rule alongside its audit timeline. From here administrators can edit the rule or permanently delete it.
+
+Navigate to **Settings → Credit Scoring Settings → Credit Scoring Rules** and click the **Field Name** of any rule.
+
+---
+
+![Scoring Rule Detail page](/images/scoring-rule-detail.png)
+
+## Rule Details
+
+The detail panel shows all properties of the rule as read-only fields:
+
+| Field | Description |
+|---|---|
+| **ID** | The unique short alphanumeric identifier for the rule. |
+| **Encoded Key** | A longer system-generated key used internally. |
+| **Name** | The internal `snake_case` field name this rule evaluates (e.g. `net_income`). |
+| **Code** | A badge displaying the human-readable field label (e.g. `Net Income`). |
+| **Description** | The explanation of what this rule evaluates (e.g. *Net income should be greater than 100,000*). |
+| **Type** | The operator and threshold value that define the rule's condition (e.g. *Greater than → 100,000*). |
+| **Points** | The points awarded when the condition is met, displayed in green for positive values (e.g. `+10`). |
+| **Status** | Whether the rule is **Active** or **Inactive**. |
+| **Thresholds** | The number of risk thresholds defined for this rule, or *None* if no thresholds have been configured. |
+
+---
+
+## Actions
+
+| Button | Colour | Description |
+|---|---|---|
+| **Destroy** | 🔴 Red | Permanently deletes the rule. This action is irreversible and will remove the rule from all future scoring calculations immediately. |
+| **Edit** | 🔵 Blue | Opens the [Edit Scoring Rule](/guides/edit-scoring-rule) page to modify the rule's configuration. |
+
+<Aside type="caution">
+  Destroying a rule permanently removes it from the scoring model. Any applications scored after deletion will no longer include this rule's points. This cannot be undone.
+</Aside>
+
+---
+
+## Timeline
+
+The **Timeline** panel on the right records every event related to the rule. Each entry captures:
+
+| Field | Description |
+|---|---|
+| **Event** | The type of action (e.g. *Created Credit Scoring Rule*). |
+| **Details** | A snapshot of the rule data at the time of the event — Value, Points, Operator, Field Name, Description, and Field Label. |
+| **Actor** | The user or system process that performed the action. |
+| **Timestamp** | The exact date and time including timezone. |
+
+<Aside type="note">
+  The Timeline is append-only and cannot be modified. It provides a complete audit history of every change to the rule configuration.
+</Aside>

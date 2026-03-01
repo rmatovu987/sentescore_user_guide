@@ -1,0 +1,67 @@
+---
+title: Invitation Detail
+description: A guide to the invitation detail page in SenteScore.
+sidebar:
+  order: 21
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Invitation Detail** page shows the full details of an individual invitation, the actions available on it, and a complete timeline of its history. Administrators use this page to check invitation status, edit details, resend a link, or remove an invitation.
+
+To access this page, navigate to **Settings → Business Settings → Invitations** and click the **ID** of any invitation.
+
+---
+
+![Invitation Detail page](/images/invitation-detail.png)
+
+## Invitation Details
+
+The detail panel shows all fields associated with the invitation as read-only:
+
+| Field | Description |
+|---|---|
+| **ID** | The unique short alphanumeric identifier for the invitation. |
+| **Encoded Key** | A longer system-generated key used internally. |
+| **First Name** | The invitee's first name. |
+| **Last Name** | The invitee's last name. |
+| **Email Address** | The email address the invitation was sent to. |
+| **Time Zone** | The time zone assigned to the invitee. |
+| **Invited By** | The name of the administrator who sent the invitation, displayed as a clickable link. |
+
+---
+
+## Actions
+
+Three action buttons are available at the bottom of the detail panel:
+
+| Button | Colour | Description |
+|---|---|---|
+| **Destroy** | 🔴 Red | Permanently deletes the invitation. The invitee's link will no longer work. This action is irreversible. |
+| **Edit** | 🔵 Blue | Opens a modal to update the invitee's details (name, email, time zone, or assigned branch). |
+| **Resend Invite** | 🟢 Green | Sends a fresh invitation email to the invitee. Use this if the original email was not received or if the invitation has expired. |
+
+<Aside type="caution">
+  **Destroy** permanently removes the invitation. If the user needs to be invited again, a new invitation must be created from scratch.
+</Aside>
+
+<Aside type="tip">
+  Use **Resend Invite** for invitations that are still **Pending** but where the invitee has not received or actioned the original email.
+</Aside>
+
+---
+
+## Timeline
+
+The **Timeline** panel on the right records every event related to the invitation. Each entry captures:
+
+| Field | Description |
+|---|---|
+| **Event** | The type of action (e.g. *Created Invitation*). |
+| **Details** | A full snapshot of the invitation data at the time of the event — Status, Last Name, First Name, Time Zone, Inviter, Email Address, and Assigned Branch. |
+| **Actor** | The user who performed the action (e.g. *Super Administrator*). |
+| **Timestamp** | The exact date and time of the event including timezone (e.g. *March 01, 2026 05:02 PM EAT*). |
+
+<Aside type="note">
+  The Timeline is append-only and cannot be modified. It provides a complete audit history of the invitation for compliance and tracking purposes.
+</Aside>

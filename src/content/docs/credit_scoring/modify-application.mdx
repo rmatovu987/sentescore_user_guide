@@ -1,33 +1,31 @@
 ---
-title: Modify a Credit Application
-description: A guide to editing and updating an existing credit application in SenteScore.
+title: Managing a Credit Application
+description: A guide to editing, submitting, and approving or rejecting credit applications in SenteScore.
 sidebar:
   order: 5
 ---
 
-import { Aside, Steps } from '@astrojs/starlight/components';
+import { Aside, Steps, Badge } from '@astrojs/starlight/components';
 
-The **Edit Credit Application** page allows authorised users to modify the details of an existing credit application. Any changes saved will trigger a re-calculation of the applicant's credit score, giving you an updated result based on the revised data.
-
-To access this page, open an application from the **Credit Applications** list and select the edit option.
+Once a credit application has been created, it moves through a structured lifecycle involving three key actions: **editing** by the loan officer who created it, **submitting** it for review, and **approval or rejection** by an authorised approver. Each action is restricted to the appropriate user at the appropriate stage.
 
 ---
 
-![Edit Credit Application page](/images/edit-credit-application.png)
+## Edit an Application
 
-## Page Overview
+Only the **loan officer who created the application** can edit it. Editing is only available while the application is in **Pending** status. Once submitted, the edit option is locked and the creator can no longer make changes.
 
-The edit form is identical in structure to the [New Credit Application](/guides/new-credit-application) form, with all previously entered data pre-filled and ready to modify. It contains three sections: **Applicant Information**, **Application Data**, and **Required Documents**.
+![Edit Credit Application](/images/edit-credit-application.png)
+
+To edit an application, open it from the **Credit Applications** list and click the **Edit** button on the score card. This opens the edit form with all previously entered data pre-filled across three sections: **Applicant Information**, **Application Data**, and **Required Documents**.
 
 <Aside type="note">
-  The page subtitle reads *"Modify the application to get an updated credit score"* — every save recalculates the score from scratch based on the latest values entered.
+  Every save recalculates the credit score from scratch based on the updated values. The new score is reflected immediately on the application detail page.
 </Aside>
 
----
+### Applicant Information
 
-## Applicant Information
-
-All applicant identity fields are editable and pre-populated with the values from the original submission.
+All applicant identity fields are editable and pre-populated from the original submission.
 
 | Field | Required | Description |
 |---|---|---|
@@ -37,68 +35,67 @@ All applicant identity fields are editable and pre-populated with the values fro
 | **Email Address** | No | The applicant's email address. |
 | **Branch** | ✅ Yes | The branch associated with the application, selectable from a dropdown. |
 
-### Validation Rules
+The same validation rules from creation apply: NIN and phone number must be valid formats, and email (if provided) must be properly formatted.
 
-The same strict validation that applies on creation is enforced on edit:
+### Application Data
 
-- **NIN** — Must be a valid, correctly formatted national identification number.
-- **Phone Number** — Must be a valid phone number format (e.g. `+1 (502) 438-3487`).
-- **Email Address** — If provided, must be a properly formatted email address.
+All financial scoring fields are pre-filled and editable. These fields are dynamically configured by administrators — your organisation may see different fields depending on the scoring parameters set up in **Settings**.
 
----
+### Required Documents
 
-## Application Data
+Supporting documents can be uploaded or replaced in this section. Document requirements are also admin-configured and may vary by workflow or loan product. Each requirement shows the document name, whether it is mandatory (`*`), and a **Choose File** upload button.
 
-This section contains the financial inputs used to compute the credit score. All fields are pre-filled with the previously submitted values and can be updated freely.
+### Notes
 
-<Aside type="tip">
-  These fields are **dynamically configured** by your system administrators in **Settings**. The fields available in your organisation may differ from those shown here. Any field changes directly affect the recalculated credit score upon saving.
-</Aside>
-
-| Field | Description |
-|---|---|
-| **Gross Monthly Income** | The sum of all the applicant's monthly incomes. |
-| **Total Expenditures** | The sum of all the applicant's monthly expenditures. |
-| **Total Current Debt** | The total outstanding debt the applicant currently holds. |
-| **Current Monthly Debt Installment** | The monthly repayment amount on existing debts. |
-| **CRB Score** | The applicant's score from the Credit Reference Bureau platform. |
-| **Loan Application Amount** | The amount of money the applicant is requesting. |
-| **Proposed Monthly Payment** | The monthly repayment the applicant proposes for the requested loan. |
-| **Purpose** | What the applicant intends to use the loan for. |
-
----
-
-## Required Documents
-
-This section allows supporting documents to be attached to the application. Document requirements are configured by administrators and may vary by workflow or loan product.
-
-<Aside type="tip">
-  Like the Application Data fields, the documents requested here are **dynamically set by administrators**. Your organisation may require different documents depending on the loan type or workflow configured.
-</Aside>
-
-Each document requirement shows:
-- The **document name** and description (e.g. *Bank / Mobile Money Statement for 6 months*)
-- A red asterisk (`*`) if the document is **mandatory**
-- A **Choose File** upload button to attach the relevant file
-
----
-
-## Notes
-
-A free-text **Notes** field at the bottom of the form allows the submitting user to add any additional context, observations, or remarks about the application. This is optional but useful for communicating information to reviewers further along the workflow.
-
----
-
-## Saving Changes
+A free-text **Notes** field lets the loan officer add context or remarks for reviewers further along the workflow.
 
 <Steps>
-1. Update any fields in **Applicant Information** or **Application Data** as needed.
-2. Upload any required or updated documents in the **Required Documents** section.
-3. Add any relevant remarks in the **Notes** field.
-4. Click **Update Credit Application** to save. The credit score will be recalculated immediately based on the new values.
-5. To discard all changes, click **Cancel** or **Back to Applications**.
+1. Open the application and click **Edit** on the score card.
+2. Update any fields across **Applicant Information**, **Application Data**, or **Required Documents**.
+3. Add any remarks in the **Notes** field.
+4. Click **Update Credit Application** to save and rescore.
 </Steps>
 
+---
+
+## Submit an Application
+
+Once the loan officer is satisfied the application is complete and accurate, they must **submit** it to move it into the approval workflow. Submitting transitions the application status from `Pending` to `Submitted`.
+
+![Submit Credit Application](/images/submit-credit-application.png)
+
 <Aside type="caution">
-  Saving an edited application recalculates the credit score. If the application is already in an active workflow, reviewers will see the updated score. Ensure all changes are intentional before clicking **Update Credit Application**.
+  Submitting is a one-way action. Once an application is submitted, **the creator can no longer edit it**. Ensure all information is correct and all required documents are uploaded before submitting.
+</Aside>
+
+To submit, open the application detail page and click the **Submit** button on the score card. The application will immediately enter the configured approval workflow and be routed to the first-level reviewer.
+
+<Steps>
+1. Open the application from the **Credit Applications** list.
+2. Review the score, applicant information, application data, and attachments to confirm everything is correct.
+3. Click **Submit** on the score card.
+4. The application status changes to **Submitted** and is routed to the first level of the approval workflow.
+</Steps>
+
+---
+
+## Approve / Reject an Application
+
+Once an application is in **Submitted** status, it is the **approver's** responsibility to action it. The original creator no longer has edit access at this stage. The approver reviews the application and makes one of three decisions: **Approve**, **Reject**, or **Send to Arbitration**.
+
+![Approve or Reject Credit Application](/images/approve-reject-credit-application.png)
+
+<Aside type="note">
+  Approvers are determined by the role assigned to each level of the workflow configuration. Only users with the appropriate role for the current workflow level will see the action buttons.
+</Aside>
+
+### Approver Actions
+
+| Action | Outcome |
+|---|---|
+| **Approve** | The application is approved at the current level and advances to the next level in the workflow. If this is the final level, the workflow status is marked **Approved**. |
+| **Reject** | The application is declined. The workflow stops immediately and the status is updated to **Rejected** at the current level. |
+
+<Aside type="caution">
+  Approval and rejection actions are recorded in the application's **Timeline** and cannot be undone. Ensure your decision is final before actioning.
 </Aside>

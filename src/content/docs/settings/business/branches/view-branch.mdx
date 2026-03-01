@@ -1,0 +1,47 @@
+---
+title: Branch Detail
+description: A guide to the branch detail page in SenteScore.
+sidebar:
+  order: 13
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Branch Detail** page shows the full details of an individual branch alongside a complete history of every change made to it. Administrators can access this page to review branch information or initiate an edit.
+
+To access this page, navigate to **Settings → Business Settings → Branches** and click the **ID** of any branch in the list.
+
+---
+
+![Branch detail page](/images/branch-detail.png)
+
+## Branch Details
+
+The left panel shows the current state of the branch as read-only fields:
+
+| Field | Description |
+|---|---|
+| **ID** | The unique short alphanumeric identifier for the branch (e.g. `YjeWvM`). |
+| **Encoded Key** | A longer system-generated key used internally (e.g. `20755000ba3d4815b349a7d21552a7d5`). |
+| **Name** | The current display name of the branch. |
+| **Is Main** | Whether this branch is designated as the primary branch (`Yes` / `No`). |
+| **Status** | The current status of the branch — **Active** or **Inactive**. |
+
+A **Close** button in the top-right returns you to the Branches list without making any changes.
+
+---
+
+## Timeline
+
+The **Timeline** panel on the right is an immutable audit log of every change made to the branch. Each entry records:
+
+| Field | Description |
+|---|---|
+| **Event** | A description of what happened (e.g. *Created Branch*). |
+| **Details** | A snapshot of the branch data at the time of the event — Code, Name, Is Main, and Status. |
+| **Actor** | The user or system process that triggered the event (e.g. *System*). |
+| **Timestamp** | The exact date and time of the event including timezone (e.g. *January 23, 2026 09:50 PM EAT*). |
+
+<Aside type="note">
+  The Timeline cannot be edited or deleted. It provides a full history of every change made to the branch for audit and compliance purposes.
+</Aside>
