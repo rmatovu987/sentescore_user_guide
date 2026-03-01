@@ -1,28 +1,87 @@
 ---
 title: SenteScore User Guide
-description: Official user guide and API reference for SenteScore — Intelligent Credit Scoring & Workflow Automation.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+description: Official user guide for SenteScore — Intelligent Credit Scoring & Workflow Automation for modern lenders.
+template: splash
 hero:
   title: |
-    Welcome to
     <span
       class="font-black text-transparent
         bg-clip-text bg-gradient-to-b
         from-accent-700 to-accent-400
         dark:from-accent-500 dark:to-accent-200"
     >
-      SenteScore <br /> User Guide
+      SenteScore
     </span>
-  tagline: Intelligent credit scoring and workflow automation for modern lenders.
+    User Guide
+  tagline: Everything you need to score smarter, lend faster, and manage the complete credit lifecycle — from parameter setup to final disbursement.
   image:
     file: ../../assets/houston.webp
   actions:
-    - text: Quick Start
+    - text: Get Started
       link: /getting-started/introduction/
       icon: right-arrow
       variant: primary
-    - text: API Reference
-      link: /integrations/api-overview/
-      icon: external
 ---
 
+import { Card, CardGrid, LinkCard, Aside } from '@astrojs/starlight/components';
+
+
+## Explore the Docs
+
+<CardGrid>
+  <Card title="Credit Scoring Applications" icon="document">
+    Learn how to create, submit, and manage credit applications — including the scoring lifecycle, approval workflow, score breakdowns, and audit trail.
+
+    [View Credit Applications →](/credit_scoring/view-applications)
+  </Card>
+  <Card title="Workflow Applications" icon="list-format">
+    Understand how approved scoring records are promoted to workflow applications and tracked through multi-level approval chains.
+
+    [View Workflow Applications →](/workflow_applications/view-applications)
+  </Card>
+  <Card title="Scoring Rules & Field Definitions" icon="setting">
+    Configure the fields and rules that power your credit model — including direct fields, calculated fields, operators, thresholds, and risk bands.
+
+    [View Credit Scoring Settings →](/settings/scoring/field-definitions/view-field-definitions)
+  </Card>
+  <Card title="Workflows & Approval Levels" icon="approve-check-circle">
+    Build multi-level approval workflows with configurable roles, approvers, verification checklists, and arbitration escalation paths.
+
+    [View Workflow Settings →](/settings/workflows/view-workflows)
+  </Card>
+  <Card title="Users, Roles & Invitations" icon="group">
+    Manage your team — invite users, assign roles, configure permissions, and attach branches. Users are onboarded through a secure invitation flow.
+
+    [View Organisation Settings →](/settings/business/users/view-users)
+  </Card>
+  <Card title="Branches & Organisation" icon="open-book">
+    Configure your organisation's branch structure, designate your main branch, and control which branches are active on the platform.
+
+    [View Branch Settings →](/settings/business/branches/view-branches)
+  </Card>
+</CardGrid>
+
+---
+
+## How SenteScore Works
+
+<CardGrid stagger>
+  <Card title="1 — Define Scoring Parameters" icon="pencil">
+    Create custom field definitions from any data source — income, repayment history, employment stability, debt-to-income ratios, and alternative data signals. Set weights, thresholds, and scoring bands that reflect your lending philosophy.
+  </Card>
+  <Card title="2 — Build Your Approval Workflow" icon="random">
+    Map the full loan lifecycle — from application submission and automated scoring, through manual review levels, approval, and disbursement — with conditional routing, escalation paths, and configurable checklists at every step.
+  </Card>
+  <Card title="3 — Process Applications at Scale" icon="rocket">
+    Loan officers submit applications from a single hub. Every application is automatically scored in real time, routed through your configured workflow, and tracked with a complete field-level audit trail from submission to final decision.
+  </Card>
+  <Card title="4 — Audit, Export & Analyse" icon="information">
+    Every scoring decision is explainable, logged, and traceable. Export any list to PDF, Excel, CSV, or clipboard. The system-wide audit log captures every change across applications, users, roles, and settings — append-only and tamper-proof.
+  </Card>
+</CardGrid>
+
+---
+
+<Aside type="tip" title="New to SenteScore?">
+  Start with the [Credit Applications](/credit_scoring/view-applications) guide to understand how applications flow from creation to final approval — then explore [Workflow Settings](/workflow_applications/view-applications) to learn how approval chains are configured behind the scenes.
+</Aside>
